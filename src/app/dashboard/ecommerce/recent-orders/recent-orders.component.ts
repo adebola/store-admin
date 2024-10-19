@@ -16,7 +16,20 @@ import {tap} from "rxjs/operators";
 @Component({
     selector: 'app-recent-orders',
     standalone: true,
-    imports: [MatCardModule, MatMenuModule, MatButtonModule, RouterLink, MatTableModule, MatPaginatorModule, NgIf, MatTooltipModule, AsyncPipe, CurrencyPipe, DatePipe, NgOptimizedImage],
+    imports: [
+        MatCardModule,
+        MatMenuModule,
+        MatButtonModule,
+        RouterLink,
+        MatTableModule,
+        MatPaginatorModule,
+        NgIf,
+        MatTooltipModule,
+        AsyncPipe,
+        CurrencyPipe,
+        DatePipe,
+        NgOptimizedImage
+    ],
     templateUrl: './recent-orders.component.html',
     styleUrl: './recent-orders.component.scss'
 })
