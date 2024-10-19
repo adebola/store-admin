@@ -86,12 +86,6 @@ export class OrderService {
         });
     }
 
-    getAdminOrderStatistics(): Observable<OrderStatistics>  {
-        return this.http.get<{aggregate:OrderStatistics[]}>(`${ORDER_URL}/aggregates/count`).pipe(
-            map(o => o.aggregate[0])
-        );
-    }
-
     get6MonthOrderAggregate(): Observable<MonthlyOrder[]> {
         return this.http.get<{orders: MonthlyOrder[]}>(`${ORDER_URL}/admin/aggregates/last6months`)
             .pipe(

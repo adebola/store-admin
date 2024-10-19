@@ -163,8 +163,6 @@ export class AuthService {
     autoLogout(expirationDuration: number) {
         this.tokenExpirationTimer = setTimeout(() => {
             this.logout();
-            this.router.navigate(['/']).then(r => {
-            });
         }, expirationDuration);
     }
 
@@ -236,6 +234,7 @@ export class AuthService {
 
         this.tokenExpirationTimer = null;
         this.snackService.message('You have successfully logged out');
+        this.router.navigate(['/authentication']).then(r => {});
     }
 
     reloadUser() {

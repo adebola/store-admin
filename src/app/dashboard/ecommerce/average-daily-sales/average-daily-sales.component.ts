@@ -115,7 +115,6 @@ export class AverageDailySalesComponent implements OnInit,  OnDestroy {
                     }
                 },
                 tooltip: {
-
                     y: {
                         formatter: function(val) {
                             return val.toString()
