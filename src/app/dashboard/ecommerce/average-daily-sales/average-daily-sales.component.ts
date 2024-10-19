@@ -1,4 +1,4 @@
-import { Component, ViewChild } from '@angular/core';
+import {Component, OnDestroy, OnInit, ViewChild} from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
 import { MatMenuModule } from '@angular/material/menu';
@@ -16,6 +16,8 @@ import {
     ApexXAxis,
     NgApexchartsModule
 } from "ng-apexcharts";
+import {OrderService} from "../../../shared/service/order.service";
+import {Subscription} from "rxjs";
 
 export type ChartOptions = {
     series: ApexAxisChartSeries;
@@ -37,92 +39,92 @@ export type ChartOptions = {
     templateUrl: './average-daily-sales.component.html',
     styleUrl: './average-daily-sales.component.scss'
 })
-export class AverageDailySalesComponent {
-
+export class AverageDailySalesComponent implements OnInit,  OnDestroy {
     @ViewChild("chart") chart: ChartComponent;
     public chartOptions: Partial<ChartOptions>;
+    private subscription: Subscription;
 
-    constructor() {
-        this.chartOptions = {
-            series: [
-                {
-                    name: "Daily Sales",
-                    data: [21, 22, 10, 28, 16, 21, 30]
-                }
-            ],
-            chart: {
-                height: 214,
-                type: "bar",
-                toolbar: {
-                    show: false
-                }
-            },
-            colors: [
-                "#00cae3"
-            ],
-            plotOptions: {
-                bar: {
-                    columnWidth: "45%",
-                    distributed: true
-                }
-            },
-            dataLabels: {
-                enabled: false
-            },
-            legend: {
-                show: false
-            },
-            grid: {
-                strokeDashArray: 5,
-                borderColor: "#e0e0e0",
-                row: {
-                    colors: ["#f4f6fc", "transparent"], // takes an array which will be repeated on columns
-                    opacity: 0.5
-                }
-            },
-            xaxis: {
-                categories: [
-                    "Jan",
-                    "Feb",
-                    "Mar",
-                    "Apr",
-                    "May",
-                    "Jun",
-                    "Jul"
-                ],
-                axisBorder: {
-                    show: false,
-                    color: '#e0e0e0'
-                },
-                axisTicks: {
-                    show: false,
-                    color: '#e0e0e0'
-                },
-                labels: {
-                    show: false,
-                    style: {
-                        colors: "#919aa3",
-                        fontSize: "14px"
-                    }
-                }
-            },
-            yaxis: {
-                labels: {
-                    show: true,
-                    style: {
-                        colors: "#919aa3",
-                        fontSize: "14px"
-                    }
-                }
-            },
-            tooltip: {
-                y: {
-                    formatter: function(val) {
-                        return "$" + val;
-                    }
-                }
-            }
-        };
+    ngOnDestroy(): void {
+        this.subscription.unsubscribe();
     }
 
+    ngOnInit(): void {
+        this.subscription = this.orderService.get6MonthOrderAggregate().subscribe(oa => {
+            this.chartOptions = {
+                series: [
+                    {
+                        name: "Monthly Orders",
+                        data: oa.map(o => o.totalOrders)
+                    }
+                ],
+                chart: {
+                    height: 214,
+                    type: "bar",
+                    toolbar: {
+                        show: false
+                    }
+                },
+                colors: [
+                    "#00cae3"
+                ],
+                plotOptions: {
+                    bar: {
+                        columnWidth: "45%",
+                        distributed: true
+                    }
+                },
+                dataLabels: {
+                    enabled: true
+                },
+                legend: {
+                    show: true
+                },
+                grid: {
+                    strokeDashArray: 5,
+                    borderColor: "#e0e0e0",
+                    row: {
+                        colors: ["#f4f6fc", "transparent"], // takes an array which will be repeated on columns
+                        opacity: 0.5
+                    }
+                },
+                xaxis: {
+                    categories: oa.map(o => o.month),
+                    axisBorder: {
+                        show: false,
+                        color: '#e0e0e0'
+                    },
+                    axisTicks: {
+                        show: false,
+                        color: '#e0e0e0'
+                    },
+                    labels: {
+                        show: false,
+                        style: {
+                            colors: "#919aa3",
+                            fontSize: "14px"
+                        }
+                    }
+                },
+                yaxis: {
+                    labels: {
+                        show: true,
+                        style: {
+                            colors: "#919aa3",
+                            fontSize: "14px"
+                        }
+                    }
+                },
+                tooltip: {
+                    y: {
+                        formatter: function(val) {
+                            return "$" + val;
+                        }
+                    }
+                }
+            };
+        });
+
+    }
+
+    constructor(private orderService: OrderService) {}
 }

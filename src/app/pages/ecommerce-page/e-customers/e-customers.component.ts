@@ -82,7 +82,7 @@ const ELEMENT_DATA: PeriodicElement[] = [
     {
         orderId: '#ARP-1217',
         customer: {
-            img: 'images/users/user15.jpg',
+            img: 'images/users/user1.jpg',
             name: 'Marcia Baker'
         },
         email: 'marcia@example.com',
@@ -103,7 +103,7 @@ const ELEMENT_DATA: PeriodicElement[] = [
     {
         orderId: '#ARP-1364',
         customer: {
-            img: 'images/users/user7.jpg',
+            img: 'images/users/user1.jpg',
             name: 'Carolyn Barnes'
         },
         email: 'barnes@example.com',
@@ -124,7 +124,7 @@ const ELEMENT_DATA: PeriodicElement[] = [
     {
         orderId: '#ARP-2951',
         customer: {
-            img: 'images/users/user12.jpg',
+            img: 'images/users/user1.jpg',
             name: 'Donna Miller'
         },
         email: 'donna@example.com',
@@ -145,7 +145,7 @@ const ELEMENT_DATA: PeriodicElement[] = [
     {
         orderId: '#ARP-7342',
         customer: {
-            img: 'images/users/user5.jpg',
+            img: 'images/users/user1.jpg',
             name: 'Barbara Cross'
         },
         email: 'cross@example.com',
@@ -166,7 +166,7 @@ const ELEMENT_DATA: PeriodicElement[] = [
     {
         orderId: '#ARP-4619',
         customer: {
-            img: 'images/users/user16.jpg',
+            img: 'images/users/user1.jpg',
             name: 'Rebecca Block'
         },
         email: 'block@example.com',
@@ -187,7 +187,7 @@ const ELEMENT_DATA: PeriodicElement[] = [
     {
         orderId: '#ARP-7346',
         customer: {
-            img: 'images/users/user9.jpg',
+            img: 'images/users/user1.jpg',
             name: 'Ramiro McCarty'
         },
         email: 'ramiro@example.com',
@@ -229,7 +229,7 @@ const ELEMENT_DATA: PeriodicElement[] = [
     {
         orderId: '#ARP-7642',
         customer: {
-            img: 'images/users/user6.jpg',
+            img: 'images/users/user1.jpg',
             name: 'Marcelino Haddock'
         },
         email: 'haddock@example.com',
@@ -250,7 +250,7 @@ const ELEMENT_DATA: PeriodicElement[] = [
     {
         orderId: '#ARP-4652',
         customer: {
-            img: 'images/users/user13.jpg',
+            img: 'images/users/user1.jpg',
             name: 'Thomas Wilson'
         },
         email: 'wildon@example.com',
@@ -271,7 +271,7 @@ const ELEMENT_DATA: PeriodicElement[] = [
     {
         orderId: '#ARP-7895',
         customer: {
-            img: 'images/users/user14.jpg',
+            img: 'images/users/user1.jpg',
             name: 'Nathaniel Hulsey'
         },
         email: 'hulsey@example.com',
@@ -292,7 +292,7 @@ const ELEMENT_DATA: PeriodicElement[] = [
     {
         orderId: '#ARP-7895',
         customer: {
-            img: 'images/users/user14.jpg',
+            img: 'images/users/user1.jpg',
             name: 'Nathaniel Hulsey'
         },
         email: 'hulsey@example.com',
@@ -313,7 +313,7 @@ const ELEMENT_DATA: PeriodicElement[] = [
     {
         orderId: '#ARP-4652',
         customer: {
-            img: 'images/users/user13.jpg',
+            img: 'images/users/user1.jpg',
             name: 'Thomas Wilson'
         },
         email: 'wildon@example.com',
@@ -334,7 +334,7 @@ const ELEMENT_DATA: PeriodicElement[] = [
     {
         orderId: '#ARP-7642',
         customer: {
-            img: 'images/users/user6.jpg',
+            img: 'images/users/user1.jpg',
             name: 'Marcelino Haddock'
         },
         email: 'haddock@example.com',
@@ -376,7 +376,7 @@ const ELEMENT_DATA: PeriodicElement[] = [
     {
         orderId: '#ARP-7346',
         customer: {
-            img: 'images/users/user9.jpg',
+            img: 'images/users/user1.jpg',
             name: 'Ramiro McCarty'
         },
         email: 'ramiro@example.com',
@@ -397,7 +397,7 @@ const ELEMENT_DATA: PeriodicElement[] = [
     {
         orderId: '#ARP-4619',
         customer: {
-            img: 'images/users/user16.jpg',
+            img: 'images/users/user1.jpg',
             name: 'Rebecca Block'
         },
         email: 'block@example.com',
@@ -418,7 +418,7 @@ const ELEMENT_DATA: PeriodicElement[] = [
     {
         orderId: '#ARP-7342',
         customer: {
-            img: 'images/users/user5.jpg',
+            img: 'images/users/user1.jpg',
             name: 'Barbara Cross'
         },
         email: 'cross@example.com',
@@ -439,7 +439,7 @@ const ELEMENT_DATA: PeriodicElement[] = [
     {
         orderId: '#ARP-2951',
         customer: {
-            img: 'images/users/user12.jpg',
+            img: 'images/users/user1.jpg',
             name: 'Donna Miller'
         },
         email: 'donna@example.com',
@@ -460,7 +460,7 @@ const ELEMENT_DATA: PeriodicElement[] = [
     {
         orderId: '#ARP-1364',
         customer: {
-            img: 'images/users/user7.jpg',
+            img: 'images/users/user1.jpg',
             name: 'Carolyn Barnes'
         },
         email: 'barnes@example.com',
@@ -481,7 +481,7 @@ const ELEMENT_DATA: PeriodicElement[] = [
     {
         orderId: '#ARP-1217',
         customer: {
-            img: 'images/users/user15.jpg',
+            img: 'images/users/user1.jpg',
             name: 'Marcia Baker'
         },
         email: 'marcia@example.com',

@@ -82,7 +82,7 @@ const ELEMENT_DATA: PeriodicElement[] = [
     {
         orderId: '#ARP-1217',
         customer: {
-            img: 'images/users/user15.jpg',
+            img: 'images/users/user1.jpg',
             name: 'Marcia Baker'
         },
         items: 120,
@@ -104,7 +104,7 @@ const ELEMENT_DATA: PeriodicElement[] = [
     {
         orderId: '#ARP-1364',
         customer: {
-            img: 'images/users/user7.jpg',
+            img: 'images/users/user1.jpg',
             name: 'Carolyn Barnes'
         },
         items: 62,
@@ -126,7 +126,7 @@ const ELEMENT_DATA: PeriodicElement[] = [
     {
         orderId: '#ARP-2951',
         customer: {
-            img: 'images/users/user12.jpg',
+            img: 'images/users/user1.jpg',
             name: 'Donna Miller'
         },
         items: 49,
@@ -148,7 +148,7 @@ const ELEMENT_DATA: PeriodicElement[] = [
     {
         orderId: '#ARP-7342',
         customer: {
-            img: 'images/users/user5.jpg',
+            img: 'images/users/user1.jpg',
             name: 'Barbara Cross'
         },
         items: 25,
@@ -170,7 +170,7 @@ const ELEMENT_DATA: PeriodicElement[] = [
     {
         orderId: '#ARP-4619',
         customer: {
-            img: 'images/users/user16.jpg',
+            img: 'images/users/user1.jpg',
             name: 'Rebecca Block'
         },
         items: 82,
@@ -192,7 +192,7 @@ const ELEMENT_DATA: PeriodicElement[] = [
     {
         orderId: '#ARP-7346',
         customer: {
-            img: 'images/users/user9.jpg',
+            img: 'images/users/user1.jpg',
             name: 'Ramiro McCarty'
         },
         items: 64,
@@ -236,7 +236,7 @@ const ELEMENT_DATA: PeriodicElement[] = [
     {
         orderId: '#ARP-7642',
         customer: {
-            img: 'images/users/user6.jpg',
+            img: 'images/users/user1.jpg',
             name: 'Marcelino Haddock'
         },
         items: 73,
@@ -258,7 +258,7 @@ const ELEMENT_DATA: PeriodicElement[] = [
     {
         orderId: '#ARP-4652',
         customer: {
-            img: 'images/users/user13.jpg',
+            img: 'images/users/user1.jpg',
             name: 'Thomas Wilson'
         },
         items: 66,
@@ -280,7 +280,7 @@ const ELEMENT_DATA: PeriodicElement[] = [
     {
         orderId: '#ARP-7895',
         customer: {
-            img: 'images/users/user14.jpg',
+            img: 'images/users/user1.jpg',
             name: 'Nathaniel Hulsey'
         },
         items: 28,
@@ -302,7 +302,7 @@ const ELEMENT_DATA: PeriodicElement[] = [
     {
         orderId: '#ARP-7895',
         customer: {
-            img: 'images/users/user14.jpg',
+            img: 'images/users/user1.jpg',
             name: 'Nathaniel Hulsey'
         },
         items: 28,
@@ -324,7 +324,7 @@ const ELEMENT_DATA: PeriodicElement[] = [
     {
         orderId: '#ARP-4652',
         customer: {
-            img: 'images/users/user13.jpg',
+            img: 'images/users/user1.jpg',
             name: 'Thomas Wilson'
         },
         items: 66,
@@ -346,7 +346,7 @@ const ELEMENT_DATA: PeriodicElement[] = [
     {
         orderId: '#ARP-7642',
         customer: {
-            img: 'images/users/user6.jpg',
+            img: 'images/users/user.jpg',
             name: 'Marcelino Haddock'
         },
         items: 73,
@@ -390,7 +390,7 @@ const ELEMENT_DATA: PeriodicElement[] = [
     {
         orderId: '#ARP-7346',
         customer: {
-            img: 'images/users/user9.jpg',
+            img: 'images/users/user1.jpg',
             name: 'Ramiro McCarty'
         },
         items: 64,
@@ -412,7 +412,7 @@ const ELEMENT_DATA: PeriodicElement[] = [
     {
         orderId: '#ARP-4619',
         customer: {
-            img: 'images/users/user16.jpg',
+            img: 'images/users/user1.jpg',
             name: 'Rebecca Block'
         },
         items: 82,
@@ -434,7 +434,7 @@ const ELEMENT_DATA: PeriodicElement[] = [
     {
         orderId: '#ARP-7342',
         customer: {
-            img: 'images/users/user5.jpg',
+            img: 'images/users/user1.jpg',
             name: 'Barbara Cross'
         },
         items: 25,
@@ -456,7 +456,7 @@ const ELEMENT_DATA: PeriodicElement[] = [
     {
         orderId: '#ARP-2951',
         customer: {
-            img: 'images/users/user12.jpg',
+            img: 'images/users/user1.jpg',
             name: 'Donna Miller'
         },
         items: 49,
@@ -478,7 +478,7 @@ const ELEMENT_DATA: PeriodicElement[] = [
     {
         orderId: '#ARP-1364',
         customer: {
-            img: 'images/users/user7.jpg',
+            img: 'images/users/user1.jpg',
             name: 'Carolyn Barnes'
         },
         items: 62,
@@ -500,7 +500,7 @@ const ELEMENT_DATA: PeriodicElement[] = [
     {
         orderId: '#ARP-1217',
         customer: {
-            img: 'images/users/user15.jpg',
+            img: 'images/users/user1.jpg',
             name: 'Marcia Baker'
         },
         items: 120,

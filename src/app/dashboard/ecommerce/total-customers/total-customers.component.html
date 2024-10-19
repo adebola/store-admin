@@ -1,12 +1,12 @@
 <mat-card class="daxa-card total-customers-card mb-25 border-radius bg-white border-none d-block">
-    <mat-card-content>
+    <mat-card-content *ngIf="tuser$ | async as tuser else loading">
         <div class="d-flex justify-content-between">
             <div class="title">
                 <h5>
                     Total Customers
                 </h5>
                 <div class="number fw-medium lh-1">
-                    84,127
+                    {{tuser.count | number}}
                 </div>
             </div>
             <div class="icon text-center bg-info rounded-circle text-white position-relative">
@@ -27,4 +27,7 @@
             </span>
         </div>
     </mat-card-content>
+    <ng-template #loading>
+        <mat-spinner></mat-spinner>
+    </ng-template>
 </mat-card>

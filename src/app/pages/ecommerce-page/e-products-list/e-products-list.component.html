@@ -32,17 +32,6 @@
                 </i>
                 <input type="text" class="input-search d-block w-100 border-none outline-0" placeholder="Search product..." (keyup)="applyFilter($event)" #input>
             </form>
-            <ul class="info pl-0 mb-0 mt-0 list-unstyled text-body">
-                <li class="d-inline-block">
-                    All Products <span class="text-daxa">(48,753)</span>
-                </li>
-                <li class="d-inline-block">
-                    Published Products <span class="text-daxa">(35,921)</span>
-                </li>
-                <li class="d-inline-block">
-                    Drafts Products <span class="text-daxa">(12,832)</span>
-                </li>
-            </ul>
         </mat-card-title>
         <mat-card-subtitle>
             <a mat-button class="add-new-btn" routerLink="/ecommerce-page/create-product">
@@ -54,7 +43,6 @@
         <div class="products-list-table">
             <div class="table-responsive">
                 <table mat-table [dataSource]="dataSource">
-
                     <!-- Checkbox Column -->
                     <ng-container matColumnDef="select">
                         <th mat-header-cell *matHeaderCellDef>
@@ -202,7 +190,7 @@
 
                     <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
                     <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
-    
+
                     <!-- Row shown when there is no matching data. -->
                     <tr class="mat-row" *matNoDataRow>
                         <td class="mat-cell" colspan="4">No data matching the filter "{{input.value}}"</td>

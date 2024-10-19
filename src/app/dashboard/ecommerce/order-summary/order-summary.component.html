@@ -27,14 +27,8 @@
     </mat-card-header>
     <mat-card-content>
         <div class="info d-flex align-items-center justify-content-between">
-            <span class="d-block">
-                Completed 60%
-            </span>
-            <span class="d-block">
-                New Order 30%
-            </span>
-            <span class="d-block">
-                Pending 10%
+            <span class="d-block" *ngFor="let label of labels; let i = index">
+                {{label}} {{ seriesPercent[i] | number: '1.2-2'}} %
             </span>
         </div>
         <apx-chart

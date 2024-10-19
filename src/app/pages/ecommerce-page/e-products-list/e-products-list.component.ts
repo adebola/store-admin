@@ -14,7 +14,17 @@ import { CustomizerSettingsService } from '../../../customizer-settings/customiz
 @Component({
     selector: 'app-e-products-list',
     standalone: true,
-    imports: [MatCardModule, MatMenuModule, MatButtonModule, RouterLink, MatTableModule, MatPaginatorModule, NgIf, MatCheckboxModule, MatTooltipModule],
+    imports: [
+        MatCardModule,
+        MatMenuModule,
+        MatButtonModule,
+        RouterLink,
+        MatTableModule,
+        MatPaginatorModule,
+        NgIf,
+        MatCheckboxModule,
+        MatTooltipModule
+    ],
     templateUrl: './e-products-list.component.html',
     styleUrl: './e-products-list.component.scss'
 })

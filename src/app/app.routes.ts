@@ -12,8 +12,6 @@ import { ForgotPasswordComponent } from './authentication/forgot-password/forgot
 import { SignUpComponent } from './authentication/sign-up/sign-up.component';
 import { SignInComponent } from './authentication/sign-in/sign-in.component';
 import { AuthenticationComponent } from './authentication/authentication.component';
-import { PProjectsComponent } from './pages/profile-page/p-projects/p-projects.component';
-import { TeamsComponent } from './pages/profile-page/teams/teams.component';
 import { UserProfileComponent } from './pages/profile-page/user-profile/user-profile.component';
 import { ProfilePageComponent } from './pages/profile-page/profile-page.component';
 import { AddUserComponent } from './pages/users-page/add-user/add-user.component';
@@ -26,14 +24,11 @@ import { EReviewsComponent } from './pages/ecommerce-page/e-reviews/e-reviews.co
 import { EEditCategoryComponent } from './pages/ecommerce-page/e-edit-category/e-edit-category.component';
 import { ECreateCategoryComponent } from './pages/ecommerce-page/e-create-category/e-create-category.component';
 import { ECategoriesComponent } from './pages/ecommerce-page/e-categories/e-categories.component';
-import { ERefundsComponent } from './pages/ecommerce-page/e-refunds/e-refunds.component';
 import { ECreateSellerComponent } from './pages/ecommerce-page/e-create-seller/e-create-seller.component';
 import { ESellerDetailsComponent } from './pages/ecommerce-page/e-seller-details/e-seller-details.component';
 import { ESellersComponent } from './pages/ecommerce-page/e-sellers/e-sellers.component';
-import { ECheckoutComponent } from './pages/ecommerce-page/e-checkout/e-checkout.component';
 import { ECustomerDetailsComponent } from './pages/ecommerce-page/e-customer-details/e-customer-details.component';
 import { ECustomersComponent } from './pages/ecommerce-page/e-customers/e-customers.component';
-import { EOrderTrackingComponent } from './pages/ecommerce-page/e-order-tracking/e-order-tracking.component';
 import { ECreateOrderComponent } from './pages/ecommerce-page/e-create-order/e-create-order.component';
 import { EOrderDetailsComponent } from './pages/ecommerce-page/e-order-details/e-order-details.component';
 import { EOrdersComponent } from './pages/ecommerce-page/e-orders/e-orders.component';
@@ -56,16 +51,13 @@ export const routes: Routes = [
             {path: 'create-product', component: ECreateProductComponent},
             {path: 'edit-product', component: EEditProductComponent},
             {path: 'orders', component: EOrdersComponent},
-            {path: 'order-details', component: EOrderDetailsComponent},
+            {path: 'order-details/:id', component: EOrderDetailsComponent},
             {path: 'create-order', component: ECreateOrderComponent},
-            {path: 'order-tracking', component: EOrderTrackingComponent},
             {path: 'customers', component: ECustomersComponent},
             {path: 'customer-details', component: ECustomerDetailsComponent},
-            {path: 'checkout', component: ECheckoutComponent},
             {path: 'sellers', component: ESellersComponent},
             {path: 'seller-details', component: ESellerDetailsComponent},
             {path: 'create-seller', component: ECreateSellerComponent},
-            {path: 'refunds', component: ERefundsComponent},
             {path: 'categories', component: ECategoriesComponent},
             {path: 'create-category', component: ECreateCategoryComponent},
             {path: 'edit-category', component: EEditCategoryComponent},
@@ -96,8 +88,6 @@ export const routes: Routes = [
         canActivate: [AuthGuard],
         children: [
             {path: '', component: UserProfileComponent},
-            {path: 'teams', component: TeamsComponent},
-            {path: 'projects', component: PProjectsComponent},
         ]
     },
     {
@@ -111,7 +101,11 @@ export const routes: Routes = [
             {path: 'confirm-email', component: ConfirmEmailComponent},
         ]
     },
-    {path: 'my-profile', component: MyProfileComponent, canActivate: [AuthGuard]},
+    {
+        path: 'my-profile',
+        component: MyProfileComponent,
+        canActivate: [AuthGuard]
+    },
     {
         path: 'settings',
         component: SettingsComponent,

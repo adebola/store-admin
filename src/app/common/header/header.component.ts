@@ -61,6 +61,6 @@ export class HeaderComponent {
 
     logout() {
         this.authService.logout();
-        this.router.navigate(['/']).then(r => {});
+        this.router.navigate(['/authentication']).then(r => {});
     }
 }

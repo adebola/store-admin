@@ -1,98 +1,84 @@
+<!-- Breadcrumb -->
+<div class="breadcrumb-card mb-25 d-md-flex align-items-center justify-content-between" *ngIf="standalone">
+    <h5 class="mb-0">
+        Orders
+    </h5>
+    <ol class="breadcrumb list-unstyled mt-0 mb-0 pl-0">
+        <li class="breadcrumb-item position-relative">
+            <a routerLink="/" class="d-inline-block position-relative">
+                <i class="ri-home-8-line"></i>
+                Dashboard
+            </a>
+        </li>
+        <li class="breadcrumb-item position-relative">
+            E-Commerce
+        </li>
+        <li class="breadcrumb-item position-relative">
+            Orders
+        </li>
+    </ol>
+</div>
+
+<div class="breadcrumb-card mb-25 d-md-flex align-items-center justify-content-between" *ngIf="!standalone">
+    <h5 class="mb-0">
+        Recent Orders
+    </h5>
+</div>
+
+<!-- Orders -->
 <mat-card
-    class="daxa-card recent-orders-card mb-25 border-radius bg-white border-none d-block"
+    class="daxa-card orders-card mb-25 border-radius bg-white border-none d-block"
     [class.rtl-enabled]="themeService.isRTLEnabled()"
 >
     <mat-card-header>
         <mat-card-title>
-            <h5 class="mb-0">
-                Recent Orders
-            </h5>
-        </mat-card-title>
-        <mat-card-subtitle>
-            <button type="button" mat-button class="card-header-menu-btn" [matMenuTriggerFor]="cardHeaderMenu">
-                Show All
-            </button>
-            <mat-menu #cardHeaderMenu="matMenu" class="card-header-menu" xPosition="before">
-                <button mat-menu-item>
-                    Shipped
-                </button>
-                <button mat-menu-item>
-                    Confirmed
-                </button>
-                <button mat-menu-item>
-                    Pending
-                </button>
-                <button mat-menu-item>
-                    Rejected
-                </button>
-            </mat-menu>
             <form class="search-box position-relative">
                 <i class="material-symbols-outlined">
                     search
                 </i>
-                <input type="text" class="input-search d-block w-100 border-none outline-0" placeholder="Search here..." (keyup)="applyFilter($event)" #input>
+                <input type="text" class="input-search d-block w-100 border-none outline-0" placeholder="Search order..." #input>
             </form>
-        </mat-card-subtitle>
+        </mat-card-title>
     </mat-card-header>
     <mat-card-content>
-        <div class="recent-orders-table">
+        <div class="orders-table">
             <div class="table-responsive">
-                <table mat-table [dataSource]="dataSource">
-
-                    <!-- Order ID Column -->
-                    <ng-container matColumnDef="orderID">
+                <table mat-table [dataSource]="dataSource"  *ngIf="!(dataSource.loading$ | async); else loading">
+                    <ng-container matColumnDef="Id">
                         <th mat-header-cell *matHeaderCellDef>
-                            Order ID
+                            User
                         </th>
                         <td mat-cell *matCellDef="let element">
-                            {{element.orderID}}
-                        </td>
-                    </ng-container>
-
-                    <!-- Customer Column -->
-                    <ng-container matColumnDef="customer">
-                        <th mat-header-cell *matHeaderCellDef>
-                            Customer
-                        </th>
-                        <td mat-cell *matCellDef="let element">
-                            <div class="info d-flex align-items-center">
+                            <div class="product-info d-flex align-items-center">
                                 <div class="image">
-                                    <img [src]="element.customer.img" alt="customer-image">
+                                    <img ngSrc="{{(element.user && element.user.avatarImage) ? element.user.avatarImage : 'images/users/user1.jpg'}}" alt="product-image" width="20" height="20">
                                 </div>
-                                <span class="d-block text-black fw-medium">
-                                    {{element.customer.name}}
-                                </span>
+                                <div class="info">
+                                    <a routerLink="/ecommerce-page/product-details" class="d-inline-block">
+                                        {{element.user ? element.user.fullName : 'Anonymous' }}
+                                    </a>
+                                </div>
                             </div>
                         </td>
                     </ng-container>
 
-                    <!-- Created Date Column -->
-                    <ng-container matColumnDef="createdDate">
+                    <!-- Price Column -->
+                    <ng-container matColumnDef="price">
                         <th mat-header-cell *matHeaderCellDef>
-                            Created
+                            Price
                         </th>
                         <td mat-cell *matCellDef="let element">
-                            {{element.createdDate}}
+                            {{(element.grandTotal) | currency : "₦":"symbol":"1.0-0"}}
                         </td>
                     </ng-container>
 
-                    <!-- Total Price Column -->
-                    <ng-container matColumnDef="totalPrice">
+                    <!-- Date Column -->
+                    <ng-container matColumnDef="date">
                         <th mat-header-cell *matHeaderCellDef>
-                            Total
+                            Date
                         </th>
                         <td mat-cell *matCellDef="let element">
-                            {{element.totalPrice}}
-                        </td>
-                    </ng-container>
-
-                    <!-- Profit Column -->
-                    <ng-container matColumnDef="profit">
-                        <th mat-header-cell *matHeaderCellDef>
-                            Profit
-                        </th>
-                        <td mat-cell *matCellDef="let element">
-                            {{element.profit}}
+                            {{element.date | date}}
                         </td>
                     </ng-container>
 
@@ -102,53 +88,38 @@
                             Status
                         </th>
                         <td mat-cell *matCellDef="let element">
-                            <span class="daxa-badge pending d-inline-block" *ngIf="element.status.pending">
-                                {{element.status.pending}}
+                            <span class="daxa-badge pending d-inline-block pointer-link" *ngIf="element.status === 'Pending'" [routerLink]="['/ecommerce-page/order-details', element._id]">
+                                {{element.status}}
                             </span>
-                            <span class="daxa-badge shipped d-inline-block" *ngIf="element.status.shipped">
-                                {{element.status.shipped}}
+                            <span class="daxa-badge confirmed d-inline-block pointer-link" *ngIf="element.status === 'Paid'" [routerLink]="['/ecommerce-page/order-details', element._id]">
+                                {{element.status}}
                             </span>
-                            <span class="daxa-badge confirmed d-inline-block" *ngIf="element.status.confirmed">
-                                {{element.status.confirmed}}
+                            <span class="daxa-badge rejected d-inline-block pointer-link" *ngIf="element.status === 'Cancelled'" [routerLink]="['/ecommerce-page/order-details', element._id]">
+                                {{element.status}}
                             </span>
-                            <span class="daxa-badge rejected d-inline-block" *ngIf="element.status.rejected">
-                                {{element.status.rejected}}
-                            </span>
-                        </td>
-                    </ng-container>
-
-                    <!-- Action Column -->
-                    <ng-container matColumnDef="action">
-                        <th mat-header-cell *matHeaderCellDef>
-                            Action
-                        </th>
-                        <td mat-cell *matCellDef="let element">
-                            <div class="action-info">
-                                <a mat-button routerLink="/ecommerce-page/order-details" matTooltip="View Order" matTooltipPosition="above">
-                                    <i class="material-symbols-outlined">
-                                        {{element.action.view}}
-                                    </i>
-                                </a>
-                                <button type="button" mat-button matTooltip="Delete" matTooltipPosition="above">
-                                    <i class="material-symbols-outlined">
-                                        {{element.action.delete}}
-                                    </i>
-                                </button>
-                            </div>
                         </td>
                     </ng-container>
 
                     <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
                     <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
-    
+
                     <!-- Row shown when there is no matching data. -->
                     <tr class="mat-row" *matNoDataRow>
                         <td class="mat-cell" colspan="4">No data matching the filter "{{input.value}}"</td>
                     </tr>
-
                 </table>
+                <mat-paginator #paginator
+                               [length]="dataSource.totalSize"
+                               [pageIndex]="dataSource.page"
+                               [pageSize]="dataSource.pageSize"
+                               [pageSizeOptions]="[20, 40, 60, 80, 100]"
+                               (page)="logEvent($event)"
+                >
+                </mat-paginator>
+                <ng-template #loading>
+                    Loading Please Wait...
+                </ng-template>
             </div>
-            <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons></mat-paginator>
         </div>
     </mat-card-content>
 </mat-card>

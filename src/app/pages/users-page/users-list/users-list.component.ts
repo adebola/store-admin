@@ -58,7 +58,7 @@ const ELEMENT_DATA: PeriodicElement[] = [
     {
         userID: '#158',
         user: {
-            img: 'images/users/user15.jpg',
+            img: 'images/users/user1.jpg',
             name: 'Marcia Baker'
         },
         email: 'marcia@example.com',
@@ -74,7 +74,7 @@ const ELEMENT_DATA: PeriodicElement[] = [
     {
         userID: '#325',
         user: {
-            img: 'images/users/user7.jpg',
+            img: 'images/users/user1.jpg',
             name: 'Carolyn Barnes'
         },
         email: 'barnes@example.com',
@@ -90,7 +90,7 @@ const ELEMENT_DATA: PeriodicElement[] = [
     {
         userID: '#286',
         user: {
-            img: 'images/users/user12.jpg',
+            img: 'images/users/user1.jpg',
             name: 'Donna Miller'
         },
         email: 'donna@example.com',
@@ -106,7 +106,7 @@ const ELEMENT_DATA: PeriodicElement[] = [
     {
         userID: '#463',
         user: {
-            img: 'images/users/user5.jpg',
+            img: 'images/users/user1.jpg',
             name: 'Barbara Cross'
         },
         email: 'cross@example.com',
@@ -122,7 +122,7 @@ const ELEMENT_DATA: PeriodicElement[] = [
     {
         userID: '#491',
         user: {
-            img: 'images/users/user16.jpg',
+            img: 'images/users/user1.jpg',
             name: 'Rebecca Block'
         },
         email: 'block@example.com',
@@ -138,7 +138,7 @@ const ELEMENT_DATA: PeriodicElement[] = [
     {
         userID: '#860',
         user: {
-            img: 'images/users/user9.jpg',
+            img: 'images/users/user1.jpg',
             name: 'Ramiro McCarty'
         },
         email: 'ramiro@example.com',
@@ -170,7 +170,7 @@ const ELEMENT_DATA: PeriodicElement[] = [
     {
         userID: '#998',
         user: {
-            img: 'images/users/user6.jpg',
+            img: 'images/users/user1.jpg',
             name: 'Marcelino Haddock'
         },
         email: 'haddock@example.com',
@@ -186,7 +186,7 @@ const ELEMENT_DATA: PeriodicElement[] = [
     {
         userID: '#436',
         user: {
-            img: 'images/users/user13.jpg',
+            img: 'images/users/user1.jpg',
             name: 'Thomas Wilson'
         },
         email: 'wildon@example.com',
@@ -202,7 +202,7 @@ const ELEMENT_DATA: PeriodicElement[] = [
     {
         userID: '#125',
         user: {
-            img: 'images/users/user14.jpg',
+            img: 'images/users/user1.jpg',
             name: 'Nathaniel Hulsey'
         },
         email: 'hulsey@example.com',
@@ -218,7 +218,7 @@ const ELEMENT_DATA: PeriodicElement[] = [
     {
         userID: '#125',
         user: {
-            img: 'images/users/user14.jpg',
+            img: 'images/users/user1.jpg',
             name: 'Nathaniel Hulsey'
         },
         email: 'hulsey@example.com',
@@ -234,7 +234,7 @@ const ELEMENT_DATA: PeriodicElement[] = [
     {
         userID: '#436',
         user: {
-            img: 'images/users/user13.jpg',
+            img: 'images/users/user1.jpg',
             name: 'Thomas Wilson'
         },
         email: 'wildon@example.com',
@@ -251,7 +251,7 @@ const ELEMENT_DATA: PeriodicElement[] = [
     {
         userID: '#998',
         user: {
-            img: 'images/users/user6.jpg',
+            img: 'images/users/user1.jpg',
             name: 'Marcelino Haddock'
         },
         email: 'haddock@example.com',
@@ -283,7 +283,7 @@ const ELEMENT_DATA: PeriodicElement[] = [
     {
         userID: '#860',
         user: {
-            img: 'images/users/user9.jpg',
+            img: 'images/users/user1.jpg',
             name: 'Ramiro McCarty'
         },
         email: 'ramiro@example.com',
@@ -299,7 +299,7 @@ const ELEMENT_DATA: PeriodicElement[] = [
     {
         userID: '#491',
         user: {
-            img: 'images/users/user16.jpg',
+            img: 'images/users/user1.jpg',
             name: 'Rebecca Block'
         },
         email: 'block@example.com',
@@ -315,7 +315,7 @@ const ELEMENT_DATA: PeriodicElement[] = [
     {
         userID: '#463',
         user: {
-            img: 'images/users/user5.jpg',
+            img: 'images/users/user1.jpg',
             name: 'Barbara Cross'
         },
         email: 'cross@example.com',
@@ -331,7 +331,7 @@ const ELEMENT_DATA: PeriodicElement[] = [
     {
         userID: '#286',
         user: {
-            img: 'images/users/user12.jpg',
+            img: 'images/users/user1.jpg',
             name: 'Donna Miller'
         },
         email: 'donna@example.com',
@@ -347,7 +347,7 @@ const ELEMENT_DATA: PeriodicElement[] = [
     {
         userID: '#325',
         user: {
-            img: 'images/users/user7.jpg',
+            img: 'images/users/user1.jpg',
             name: 'Carolyn Barnes'
         },
         email: 'barnes@example.com',
@@ -363,7 +363,7 @@ const ELEMENT_DATA: PeriodicElement[] = [
     {
         userID: '#579',
         user: {
-            img: 'images/users/user15.jpg',
+            img: 'images/users/user1.jpg',
             name: 'Marcia Baker'
         },
         email: 'marcia@example.com',

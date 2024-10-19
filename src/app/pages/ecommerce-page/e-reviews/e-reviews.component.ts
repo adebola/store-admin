@@ -86,7 +86,7 @@ const ELEMENT_DATA: PeriodicElement[] = [
             name: 'Hand Watch'
         },
         customerReview: {
-            img: 'images/users/user15.jpg',
+            img: 'images/users/user1.jpg',
             name: 'Marcia Baker',
             review: `Auctor in nam malesuada auctor ultrices proin condimentum leo cras. Ultrices a quam massa tincidunt dictum luctus cursus.`
         },
@@ -109,7 +109,7 @@ const ELEMENT_DATA: PeriodicElement[] = [
             name: 'Gaming Laptop'
         },
         customerReview: {
-            img: 'images/users/user7.jpg',
+            img: 'images/users/user1.jpg',
             name: 'Carolyn Barnes',
             review: `Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard.`
         },
@@ -132,7 +132,7 @@ const ELEMENT_DATA: PeriodicElement[] = [
             name: 'Sports Shoes'
         },
         customerReview: {
-            img: 'images/users/user12.jpg',
+            img: 'images/users/user1.jpg',
             name: 'Donna Miller',
             review: `When an unknown printer took a galley of type and scrambled it to make a type specimen book.`
         },
@@ -155,7 +155,7 @@ const ELEMENT_DATA: PeriodicElement[] = [
             name: 'Woman Handbag'
         },
         customerReview: {
-            img: 'images/users/user5.jpg',
+            img: 'images/users/user1.jpg',
             name: 'Barbara Cross',
             review: `Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old.`
         },
@@ -178,7 +178,7 @@ const ELEMENT_DATA: PeriodicElement[] = [
             name: 'Luxury Rendering'
         },
         customerReview: {
-            img: 'images/users/user16.jpg',
+            img: 'images/users/user1.jpg',
             name: 'Rebecca Block',
             review: `Ultrices a quam massa tincidunt dictum luctus cursus.`
         },
@@ -201,7 +201,7 @@ const ELEMENT_DATA: PeriodicElement[] = [
             name: 'Wireless Headphone'
         },
         customerReview: {
-            img: 'images/users/user9.jpg',
+            img: 'images/users/user1.jpg',
             name: 'Ramiro McCarty',
             review: `Auctor in nam malesuada auctor ultrices proin condimentum leo cras. Ultrices a quam massa tincidunt dictum luctus cursus.`
         },
@@ -247,7 +247,7 @@ const ELEMENT_DATA: PeriodicElement[] = [
             name: 'Mobile Device'
         },
         customerReview: {
-            img: 'images/users/user6.jpg',
+            img: 'images/users/user1.jpg',
             name: 'Marcelino Haddock',
             review: `Lorem Ipsum is simply dummy text of the printing and typesetting industry.`
         },
@@ -270,7 +270,7 @@ const ELEMENT_DATA: PeriodicElement[] = [
             name: 'Triblend T-shirt'
         },
         customerReview: {
-            img: 'images/users/user13.jpg',
+            img: 'images/users/user1.jpg',
             name: 'Thomas Wilson',
             review: `Ultrices a quam massa tincidunt dictum luctus cursus.`
         },
@@ -293,7 +293,7 @@ const ELEMENT_DATA: PeriodicElement[] = [
             name: 'Camera Lens'
         },
         customerReview: {
-            img: 'images/users/user14.jpg',
+            img: 'images/users/user1.jpg',
             name: 'Nathaniel Hulsey',
             review: `Auctor in nam malesuada auctor ultrices proin condimentum leo cras.`
         },
@@ -316,7 +316,7 @@ const ELEMENT_DATA: PeriodicElement[] = [
             name: 'Camera Lens'
         },
         customerReview: {
-            img: 'images/users/user14.jpg',
+            img: 'images/users/user1.jpg',
             name: 'Nathaniel Hulsey',
             review: `Auctor in nam malesuada auctor ultrices proin condimentum leo cras.`
         },
@@ -339,7 +339,7 @@ const ELEMENT_DATA: PeriodicElement[] = [
             name: 'Triblend T-shirt'
         },
         customerReview: {
-            img: 'images/users/user13.jpg',
+            img: 'images/users/user1.jpg',
             name: 'Thomas Wilson',
             review: `Ultrices a quam massa tincidunt dictum luctus cursus.`
         },
@@ -362,7 +362,7 @@ const ELEMENT_DATA: PeriodicElement[] = [
             name: 'Mobile Device'
         },
         customerReview: {
-            img: 'images/users/user6.jpg',
+            img: 'images/users/user1.jpg',
             name: 'Marcelino Haddock',
             review: `Lorem Ipsum is simply dummy text of the printing and typesetting industry.`
         },
@@ -408,7 +408,7 @@ const ELEMENT_DATA: PeriodicElement[] = [
             name: 'Wireless Headphone'
         },
         customerReview: {
-            img: 'images/users/user9.jpg',
+            img: 'images/users/user1.jpg',
             name: 'Ramiro McCarty',
             review: `Auctor in nam malesuada auctor ultrices proin condimentum leo cras. Ultrices a quam massa tincidunt dictum luctus cursus.`
         },
@@ -431,7 +431,7 @@ const ELEMENT_DATA: PeriodicElement[] = [
             name: 'Luxury Rendering'
         },
         customerReview: {
-            img: 'images/users/user16.jpg',
+            img: 'images/users/user1.jpg',
             name: 'Rebecca Block',
             review: `Ultrices a quam massa tincidunt dictum luctus cursus.`
         },
@@ -454,7 +454,7 @@ const ELEMENT_DATA: PeriodicElement[] = [
             name: 'Woman Handbag'
         },
         customerReview: {
-            img: 'images/users/user5.jpg',
+            img: 'images/users/user1.jpg',
             name: 'Barbara Cross',
             review: `Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old.`
         },
@@ -477,7 +477,7 @@ const ELEMENT_DATA: PeriodicElement[] = [
             name: 'Sports Shoes'
         },
         customerReview: {
-            img: 'images/users/user12.jpg',
+            img: 'images/users/user1.jpg',
             name: 'Donna Miller',
             review: `When an unknown printer took a galley of type and scrambled it to make a type specimen book.`
         },
@@ -500,7 +500,7 @@ const ELEMENT_DATA: PeriodicElement[] = [
             name: 'Gaming Laptop'
         },
         customerReview: {
-            img: 'images/users/user7.jpg',
+            img: 'images/users/user1.jpg',
             name: 'Carolyn Barnes',
             review: `Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard.`
         },
@@ -523,7 +523,7 @@ const ELEMENT_DATA: PeriodicElement[] = [
             name: 'Hand Watch'
         },
         customerReview: {
-            img: 'images/users/user15.jpg',
+            img: 'images/users/user1.jpg',
             name: 'Marcia Baker',
             review: `Auctor in nam malesuada auctor ultrices proin condimentum leo cras. Ultrices a quam massa tincidunt dictum luctus cursus.`
         },

@@ -1,12 +1,12 @@
 <mat-card class="daxa-card total-revenue-card mb-25 border-radius bg-white border-none d-block">
-    <mat-card-content>
+    <mat-card-content *ngIf="trev$ | async as trev else loading">
         <div class="d-flex justify-content-between">
             <div class="title">
                 <h5>
                     Total Revenue
                 </h5>
                 <div class="number fw-medium lh-1">
-                    $15,278
+                    {{ trev.total | currency: "₦":"symbol":"1.0-0" }}
                 </div>
             </div>
             <div class="icon text-center bg-warning rounded-circle text-white position-relative">
@@ -27,4 +27,7 @@
             </span>
         </div>
     </mat-card-content>
+    <ng-template #loading>
+        Loading Please Wait...
+    </ng-template>
 </mat-card>

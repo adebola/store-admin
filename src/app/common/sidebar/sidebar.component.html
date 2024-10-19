@@ -57,8 +57,6 @@
                             </span>
                     </a>
 
-
-
                     <a routerLink="/users" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}"
                        class="sidebar-menu-link">
                         <i class="material-symbols-outlined">
@@ -96,7 +94,24 @@
                         </i>
                         <span class="title">
                             Suppliers
-                            </span>
+                        </span>
+                    </a>
+
+                    <a routerLink="/settings" routerLinkActive="active"
+                       [routerLinkActiveOptions]="{exact: true}" class="sidebar-menu-link">
+                        <i class="material-symbols-outlined">
+                            settings
+                        </i>
+                        <span class="title">
+                            Account Settings
+                        </span>
+                    </a>
+
+                    <a (click)="logout()" class="sidebar-menu-link" style="cursor: pointer">
+                        <i class="material-symbols-outlined">
+                            logout
+                        </i>
+                        <span class="title">Logout</span>
                     </a>
 
 
@@ -122,12 +137,6 @@
                                 </a>
                             </li>
                             <li class="sidemenu-item">
-                                <a routerLink="/ecommerce-page/products-list" routerLinkActive="active"
-                                   [routerLinkActiveOptions]="{exact: true}" class="sidemenu-link">
-                                    Products List
-                                </a>
-                            </li>
-                            <li class="sidemenu-item">
                                 <a routerLink="/ecommerce-page/product-details" routerLinkActive="active"
                                    [routerLinkActiveOptions]="{exact: true}" class="sidemenu-link">
                                     Product Details
@@ -146,18 +155,6 @@
                                 </a>
                             </li>
                             <li class="sidemenu-item">
-                                <a routerLink="/ecommerce-page/cart" routerLinkActive="active"
-                                   [routerLinkActiveOptions]="{exact: true}" class="sidemenu-link">
-                                    Cart
-                                </a>
-                            </li>
-                            <li class="sidemenu-item">
-                                <a routerLink="/ecommerce-page/checkout" routerLinkActive="active"
-                                   [routerLinkActiveOptions]="{exact: true}" class="sidemenu-link">
-                                    Checkout
-                                </a>
-                            </li>
-                            <li class="sidemenu-item">
                                 <a routerLink="/ecommerce-page/orders" routerLinkActive="active"
                                    [routerLinkActiveOptions]="{exact: true}" class="sidemenu-link">
                                     Orders
@@ -173,12 +170,6 @@
                                 <a routerLink="/ecommerce-page/create-order" routerLinkActive="active"
                                    [routerLinkActiveOptions]="{exact: true}" class="sidemenu-link">
                                     Create Order
-                                </a>
-                            </li>
-                            <li class="sidemenu-item">
-                                <a routerLink="/ecommerce-page/order-tracking" routerLinkActive="active"
-                                   [routerLinkActiveOptions]="{exact: true}" class="sidemenu-link">
-                                    Order Tracking
                                 </a>
                             </li>
                             <li class="sidemenu-item">
@@ -235,12 +226,6 @@
                                     Reviews
                                 </a>
                             </li>
-                            <li class="sidemenu-item">
-                                <a routerLink="/ecommerce-page/refunds" routerLinkActive="active"
-                                   [routerLinkActiveOptions]="{exact: true}" class="sidemenu-link">
-                                    Refunds
-                                </a>
-                            </li>
                         </ul>
                     </mat-expansion-panel>
                     <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = true">
@@ -273,32 +258,6 @@
                         <mat-expansion-panel-header>
                             <mat-panel-title>
                                 <i class="material-symbols-outlined">
-                                    person
-                                </i>
-                                <span class="title">
-                                    Users
-                                </span>
-                            </mat-panel-title>
-                        </mat-expansion-panel-header>
-                        <ul class="sidebar-sub-menu">
-                            <li class="sidemenu-item">
-                                <a routerLink="/users" routerLinkActive="active"
-                                   [routerLinkActiveOptions]="{exact: true}" class="sidemenu-link">
-                                    Users List
-                                </a>
-                            </li>
-                            <li class="sidemenu-item">
-                                <a routerLink="/users/add-user" routerLinkActive="active"
-                                   [routerLinkActiveOptions]="{exact: true}" class="sidemenu-link">
-                                    Add User
-                                </a>
-                            </li>
-                        </ul>
-                    </mat-expansion-panel>
-                    <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = true">
-                        <mat-expansion-panel-header>
-                            <mat-panel-title>
-                                <i class="material-symbols-outlined">
                                     account_box
                                 </i>
                                 <span class="title">
@@ -311,18 +270,6 @@
                                 <a routerLink="/profile" routerLinkActive="active"
                                    [routerLinkActiveOptions]="{exact: true}" class="sidemenu-link">
                                     User Profile
-                                </a>
-                            </li>
-                            <li class="sidemenu-item">
-                                <a routerLink="/profile/teams" routerLinkActive="active"
-                                   [routerLinkActiveOptions]="{exact: true}" class="sidemenu-link">
-                                    Teams
-                                </a>
-                            </li>
-                            <li class="sidemenu-item">
-                                <a routerLink="/profile/projects" routerLinkActive="active"
-                                   [routerLinkActiveOptions]="{exact: true}" class="sidemenu-link">
-                                    Projects
                                 </a>
                             </li>
                         </ul>
@@ -373,18 +320,6 @@
                                     Confirm Email
                                 </a>
                             </li>
-                            <li class="sidemenu-item">
-                                <a routerLink="/authentication/lock-screen" routerLinkActive="active"
-                                   [routerLinkActiveOptions]="{exact: true}" class="sidemenu-link">
-                                    Lock Screen
-                                </a>
-                            </li>
-                            <li class="sidemenu-item">
-                                <a routerLink="/authentication/logout" routerLinkActive="active"
-                                   [routerLinkActiveOptions]="{exact: true}" class="sidemenu-link">
-                                    Logout
-                                </a>
-                            </li>
                         </ul>
                     </mat-expansion-panel>
                     <span class="sub-title text-body">
@@ -398,40 +333,6 @@
                         <span class="title">
                             My Profile
                         </span>
-                    </a>
-                    <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = true">
-                        <mat-expansion-panel-header>
-                            <mat-panel-title>
-                                <i class="material-symbols-outlined">
-                                    settings
-                                </i>
-                                <span class="title">
-                                    Settings
-                                </span>
-                            </mat-panel-title>
-                        </mat-expansion-panel-header>
-                        <ul class="sidebar-sub-menu">
-                            <li class="sidemenu-item">
-                                <a routerLink="/settings" routerLinkActive="active"
-                                   [routerLinkActiveOptions]="{exact: true}" class="sidemenu-link">
-                                    Account Settings
-                                </a>
-                            </li>
-                            <li class="sidemenu-item">
-                                <a routerLink="/settings/change-password" routerLinkActive="active"
-                                   [routerLinkActiveOptions]="{exact: true}" class="sidemenu-link">
-                                    Change Password
-                                </a>
-                            </li>
-                        </ul>
-                    </mat-expansion-panel>
-
-                    <a routerLink="/authentication/logout" class="sidebar-menu-link" routerLinkActive="active"
-                       [routerLinkActiveOptions]="{exact: true}">
-                        <i class="material-symbols-outlined">
-                            logout
-                        </i>
-                        <span class="title">Logout</span>
                     </a>
                 </mat-accordion>
             </div>

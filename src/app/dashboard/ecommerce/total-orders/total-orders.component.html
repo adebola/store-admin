@@ -6,7 +6,7 @@
                     Total Orders
                 </h5>
                 <div class="number fw-medium lh-1">
-                    20,705
+                    {{totalOrders | number}}
                 </div>
             </div>
             <div class="icon text-center bg-daxa rounded-circle text-white position-relative">
@@ -27,4 +27,8 @@
             </span>
         </div>
     </mat-card-content>
+
+    <ng-template #loading>
+        Loading Please Wait...
+    </ng-template>
 </mat-card>
