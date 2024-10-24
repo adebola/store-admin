@@ -75,3 +75,10 @@ export interface MonthlyOrder {
     totalSales: number;
     month : string;
 }
+
+export interface ProductOrderStatistics {
+    all: OrderStatistics[];
+    thisYear: OrderStatistics[];
+    thisMonth: OrderStatistics[];
+    today: OrderStatistics[];
+}

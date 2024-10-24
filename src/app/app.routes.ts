@@ -47,7 +47,7 @@ export const routes: Routes = [
         canActivate: [AuthGuard],
         children: [
             {path: '', component: EProductsListComponent},
-            {path: 'product-details', component: EProductDetailsComponent},
+            {path: 'product-details/:id', component: EProductDetailsComponent},
             {path: 'create-product', component: ECreateProductComponent},
             {path: 'edit-product', component: EEditProductComponent},
             {path: 'orders', component: EOrdersComponent},
@@ -60,7 +60,7 @@ export const routes: Routes = [
             {path: 'create-seller', component: ECreateSellerComponent},
             {path: 'categories', component: ECategoriesComponent},
             {path: 'create-category', component: ECreateCategoryComponent},
-            {path: 'edit-category', component: EEditCategoryComponent},
+            {path: 'edit-category/:id', component: EEditCategoryComponent},
             {path: 'reviews', component: EReviewsComponent}
         ]
     },

@@ -43,7 +43,7 @@
                                     <img ngSrc="{{element.product_details[0].imagePath ? element.product_details[0].imagePath : 'images/users/user1.jpg'}}" alt="product-image" width="200" height="200">
                                 </div>
                                 <div class="info">
-                                    <a routerLink="/ecommerce-page/product-details" class="d-inline-block">
+                                    <a [routerLink]="['/ecommerce-page/product-details',  element._id]" class="d-block fw-medium">
                                         {{element.product_details[0].name}}
                                     </a>
                                     <span class="d-block text-body">
