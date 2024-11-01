@@ -18,6 +18,7 @@ import {
 } from "ng-apexcharts";
 import {OrderService} from "../../../shared/service/order.service";
 import {Subscription} from "rxjs";
+import {NgIf} from "@angular/common";
 
 export type ChartOptions = {
     series: ApexAxisChartSeries;
@@ -35,7 +36,14 @@ export type ChartOptions = {
 @Component({
     selector: 'app-average-daily-sales',
     standalone: true,
-    imports: [MatCardModule, MatMenuModule, MatButtonModule, RouterLink, NgApexchartsModule],
+    imports: [
+        MatCardModule,
+        MatMenuModule,
+        MatButtonModule,
+        RouterLink,
+        NgApexchartsModule,
+        NgIf
+    ],
     templateUrl: './average-daily-sales.component.html',
     styleUrl: './average-daily-sales.component.scss'
 })

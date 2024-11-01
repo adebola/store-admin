@@ -15,7 +15,7 @@ import {
 } from "ng-apexcharts";
 import {OrderService} from "../../../shared/service/order.service";
 import {Subscription} from "rxjs";
-import {DecimalPipe, NgForOf} from "@angular/common";
+import {DecimalPipe, NgForOf, NgIf} from "@angular/common";
 
 export type ChartOptions = {
     series: ApexNonAxisChartSeries;
@@ -38,7 +38,8 @@ export type ChartOptions = {
         RouterLink,
         NgApexchartsModule,
         NgForOf,
-        DecimalPipe
+        DecimalPipe,
+        NgIf
     ],
     templateUrl: './order-summary.component.html',
     styleUrl: './order-summary.component.scss'

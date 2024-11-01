@@ -4,7 +4,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
 import { MatMenuModule } from '@angular/material/menu';
 import {MatPaginator, MatPaginatorModule, PageEvent} from '@angular/material/paginator';
-import { MatTableDataSource, MatTableModule } from '@angular/material/table';
+import { MatTableModule } from '@angular/material/table';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { RouterLink } from '@angular/router';
 import { CustomizerSettingsService } from '../../../customizer-settings/customizer-settings.service';
@@ -38,7 +38,7 @@ export class RecentOrdersComponent implements OnInit, AfterViewInit {
     isToggled = false;
     subscription: Subscription;
     displayedColumns: string[] = ['Id', 'price', 'date', 'status'];
-    dataSource = new OrderDatasource(this.orderService);
+    dataSource: OrderDatasource;
 
     @Input() standalone = false;
 

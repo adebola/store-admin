@@ -18,7 +18,7 @@ export class ProductService {
     ) {}
 
     getProducts(page: number = 1, size: number = 20, sort = 'ascending'): Observable<Products> {
-        const params: { size: number; sort: string; page: number;} =  {size, sort, page};
+        const params: { size: number; page: number;} =  {size, page};
 
         return this.http.get<Products>(`${PRODUCT_URL}/admin/all`, {
             params
@@ -87,4 +87,29 @@ export class ProductService {
         });
     }
 
+    getCategories(): Observable<string[]> {
+        return this.http.get<{categories: string[]}>(`${PRODUCT_URL}/categories`)
+            .pipe(map(c => c.categories));
+    }
+
+    updateProduct(id: string,  product: Partial<Product>, file: File | null): Observable<any> {
+        const data: FormData = new FormData();
+        if (file) data.append('file', file);
+        data.append('product', JSON.stringify(product));
+
+        return this.http.put(`${PRODUCT_URL}/admin/update/${id}`, data);
+    }
+
+    createProduct(product: {
+        name: string,
+        category: string,
+        description: string,
+        bundles : {unit: string,  price: number}[]
+    }, file: File): Observable<any> {
+        const data: FormData = new FormData();
+        data.append('file', file);
+        data.append('product', JSON.stringify(product));
+
+        return this.http.post(`${PRODUCT_URL}/admin/create`, data);
+    }
 }

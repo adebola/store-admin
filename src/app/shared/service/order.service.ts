@@ -36,6 +36,15 @@ export class OrderService {
         });
     }
 
+    getUserOrders(id: string,  pageNumber: number = 1, pageSize: number = 20): Observable<Order[]> {
+        return this.http.get<Order[]>(`${ORDER_URL}/admin/user/${id}`, {
+            params: {
+                pageNumber: pageNumber,
+                pageSize: pageSize
+            }
+        });
+    }
+
     getOrderById(id: String): Observable<Order> {
         return this.http.get<{order: Order}>(`${ORDER_URL}/${id}`).pipe(
             map(res => res.order)
@@ -86,6 +95,16 @@ export class OrderService {
         });
     }
 
+    searchUser(id: string,  pageNumber: number = 1, pageSize: number = 20, searchString: string): Observable<Order[]> {
+        return this.http.get<Order[]>(`${ORDER_URL}/admin/search/{id}`, {
+            params: {
+                pageNumber: pageNumber,
+                pageSize: pageSize,
+                search: searchString
+            }
+        });
+    }
+
     get6MonthOrderAggregate(): Observable<MonthlyOrder[]> {
         return this.http.get<{orders: MonthlyOrder[]}>(`${ORDER_URL}/admin/aggregates/last6months`)
             .pipe(
@@ -108,8 +127,15 @@ export class OrderService {
         );
     }
 
-    getOrderStatuses(): Observable<{_id: string,  count: number}[]> {
-        return this.http.get<{aggregate:{_id: string,  count: number}[]}>(`${ORDER_URL}/admin/status`)
+    getOrderStatuses(): Observable<{_id: string,  count: number, total: number}[]> {
+        return this.http.get<{aggregate:{_id: string,  count: number, total: number}[]}>(`${ORDER_URL}/admin/status`)
+            .pipe(
+                map(a => a.aggregate)
+            );
+    }
+
+    getOrderStatusesByUserId(id: string): Observable<{_id: string,  count: number, total: number}[]> {
+        return this.http.get<{aggregate:{_id: string,  count: number, total: number}[]}>(`${ORDER_URL}/admin/status/${id}`)
             .pipe(
                 map(a => a.aggregate)
             );

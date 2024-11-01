@@ -1,8 +1,7 @@
 import {CollectionViewer, DataSource} from "@angular/cdk/collections";
 import {BehaviorSubject, finalize, Observable, of, Subscription} from "rxjs";
-import {Product} from "../../../shared/model/product.model";
+import {Product, Products} from "../../../shared/model/product.model";
 import {ProductService} from "../../../shared/service/product.service";
-import {catchError} from "rxjs/operators";
 
 export class ProductDatasource implements DataSource<Product> {
     private productSubject = new BehaviorSubject<Product[]>([]);
@@ -34,7 +33,7 @@ export class ProductDatasource implements DataSource<Product> {
     }
 
     loadProducts(pageIndex = 1, pageSize = 20) {
-        this.loadingSubject.next(true);
+        // this.loadingSubject.next(true);
 
         if (this.subscription) {
             this.subscription.unsubscribe();
@@ -46,7 +45,7 @@ export class ProductDatasource implements DataSource<Product> {
                 //catchError(() => of([])),
                 finalize(() => this.loadingSubject.next(false))
             )
-            .subscribe(page => {
+            .subscribe(page  => {
                 this.totalSize = page.count;
                 this.pageSize = page.size;
                 this.pageNumber = page.current;

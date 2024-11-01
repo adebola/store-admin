@@ -1,0 +1,108 @@
+<ng-container *ngIf="viewBundle else newbundle">
+    <mat-card class="daxa-card product-details-card mb-25 border-radius bg-white border-none d-block">
+        <mat-card-content>
+            <div class="row">
+                <div class="col-8">
+                    <h5>Product Bundles</h5>
+                </div>
+                <div class="col-4 my-2">
+                    <a mat-button class="add-new-btn mb-25" color="primary" (click)="displayAddBundleForm()">
+                        + Add New Bundle
+                    </a>
+                </div>
+            </div>
+
+            <div class="emails-table">
+                <div class="table-responsive">
+                    <table mat-table [dataSource]="datasource">
+                        <!-- Unit Column -->
+                        <ng-container matColumnDef="unit">
+                            <th mat-header-cell *matHeaderCellDef>
+                                Unit
+                            </th>
+                            <td mat-cell *matCellDef="let element">
+                                <a class="fw-medium">
+                                    {{ element.unit }}
+                                </a>
+                            </td>
+                        </ng-container>
+
+                        <!-- Price Column -->
+                        <ng-container matColumnDef="price">
+                            <th mat-header-cell *matHeaderCellDef>
+                                Price
+                            </th>
+                            <td mat-cell *matCellDef="let element">
+                                <a class="fw-medium">
+                                    {{ element.price | currency: "₦":"symbol":"1.0-0" }}
+                                </a>
+                            </td>
+                        </ng-container>
+
+                        <!-- Status Column -->
+                        <ng-container matColumnDef="status">
+                            <th mat-header-cell *matHeaderCellDef>
+                                Status
+                            </th>
+                            <td mat-cell *matCellDef="let element">
+                                <a class="fw-medium">
+                                   Enabled
+                                </a>
+                            </td>
+                        </ng-container>
+
+                        <ng-container matColumnDef="action">
+                            <th mat-header-cell *matHeaderCellDef>
+                                Action
+                            </th>
+                            <td mat-cell *matCellDef="let element">
+                                <div class="action-info">
+                                    <a mat-button (click)="removeBundle(element.id)"
+                                       matTooltip="Remove Bundle" matTooltipPosition="above">
+                                        <i class="material-symbols-outlined">
+                                            delete
+                                        </i>
+                                    </a>
+                                </div>
+                            </td>
+                        </ng-container>
+
+                        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+                    </table>
+                </div>
+            </div>
+        </mat-card-content>
+    </mat-card>
+</ng-container>
+
+<ng-template #newbundle>
+    <mat-card class="daxa-card product-details-card mb-25 border-radius bg-white border-none d-block">
+        <mat-card-content>
+            <form [formGroup]="bundleForm" (ngSubmit)="onSubmitBundle()">
+                <mat-form-field class="textarea">
+                    <mat-label>
+                        Unit
+                    </mat-label>
+                    <input matInput type="text" id="unit" formControlName="unit">
+                </mat-form-field>
+                &nbsp;
+                <mat-form-field class="textarea">
+                    <mat-label>
+                        Price
+                    </mat-label>
+                    <input matInput type="number" id="price" formControlName="price">
+                </mat-form-field>
+
+                <div class="my-2">
+                    <button mat-button class="btn btn-info" type="button" (click)="cancelNew()">
+                        Cancel
+                    </button>
+                    <button mat-button class="btn btn-primary" type="submit">
+                        Create Bundle
+                    </button>
+                </div>
+            </form>
+        </mat-card-content>
+    </mat-card>
+</ng-template>

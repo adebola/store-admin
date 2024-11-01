@@ -24,7 +24,7 @@
 
 <!-- Customer Details -->
 <div class="row">
-    <div class="col-lg-4">
+    <div class="col-lg-4" *ngIf="user$ | async as user">
         <mat-card
             class="daxa-card customer-card mb-25 border-radius bg-white border-none d-block"
             [class.component-dark-theme]="themeService.isDark()"
@@ -32,11 +32,10 @@
         >
             <mat-card-content>
                 <div class="text-center">
-                    <img src="images/admin.png" width="160" class="rounded-cricle" alt="customer-image">
-                    <h4>Mateo Luca</h4>
-                    <span class="d-block text-body">
-                        hello&#64;mateo.com
-                    </span>
+                    <img
+                        ngSrc="{{user.imageUrl ? user.imageUrl : 'images/admin.png'}}"
+                        width="200" height="200" class="rounded-circle" alt="customer-image">
+                    <h4>{{ user.fullName }}</h4>
                 </div>
                 <div class="info">
                     <h5>
@@ -47,32 +46,47 @@
                             <span class="d-block text-black fw-medium">
                                 Account ID
                             </span>
-                            ID-12174123
+                            {{ user.id }}
                         </li>
                         <li class="text-body">
                             <span class="d-block text-black fw-medium">
-                                Billing Email
+                                Email
                             </span>
-                            hello&#64;luca.com
+                            {{ user.email }}
+                        </li>
+                        <li class="text-body">
+                            <span class="d-block text-black fw-medium">
+                                Telephone
+                            </span>
+                            {{ user.telephoneNumber }}
                         </li>
                         <li class="text-body">
                             <span class="d-block text-black fw-medium">
                                 Delivery Address
                             </span>
-                            715 Maple St, Hamletville, England
+                            {{ user.address }}
                         </li>
                         <li class="text-body">
                             <span class="d-block text-black fw-medium">
-                                Language
+                               Joined
                             </span>
-                            English, Spanish
+                            {{ user.joined  | date }}
                         </li>
-                        <li class="text-body">
+
+                        <ng-container *ngIf="status$ | async as status">
+                            <li class="text-body">
                             <span class="d-block text-black fw-medium">
-                                Latest Transaction
+                                Total Orders
                             </span>
-                            #ARP-1217
-                        </li>
+                                {{ (status.length > 0 ? status[0].count : 0.0) | number }}
+                            </li>
+                            <li class="text-body">
+                            <span class="d-block text-black fw-medium">
+                                Total Spend
+                            </span>
+                                {{ (status.length > 0 ? status[0].total : 0.0) | currency: "₦":"symbol":"1.0-0" }}
+                            </li>
+                        </ng-container>
                     </ul>
                 </div>
             </mat-card-content>
@@ -112,74 +126,69 @@
             <mat-card-content>
                 <div class="transactions-history-table">
                     <div class="table-responsive">
-                        <table mat-table [dataSource]="dataSource">
-        
-                            <!-- Order ID Column -->
-                            <ng-container matColumnDef="orderID">
+                        <table mat-table [dataSource]="datasource" *ngIf="!(datasource.loading$ | async); else loading">
+                            <!-- Price Column -->
+                            <ng-container matColumnDef="price">
                                 <th mat-header-cell *matHeaderCellDef>
-                                    Order ID
+                                    Price
                                 </th>
                                 <td mat-cell *matCellDef="let element">
-                                    {{element.orderID}}
+                                    {{ (element.grandTotal) | currency : "₦":"symbol":"1.0-0" }}
                                 </td>
                             </ng-container>
-        
-                            <!-- Status Column -->
-                            <ng-container matColumnDef="status">
-                                <th mat-header-cell *matHeaderCellDef>
-                                    Status
-                                </th>
-                                <td mat-cell *matCellDef="let element">
-                                    <span class="daxa-badge successful d-inline-block" *ngIf="element.status.successful">
-                                        {{element.status.successful}}
-                                    </span>
-                                    <span class="daxa-badge pending d-inline-block" *ngIf="element.status.pending">
-                                        {{element.status.pending}}
-                                    </span>
-                                    <span class="daxa-badge rejected d-inline-block" *ngIf="element.status.rejected">
-                                        {{element.status.rejected}}
-                                    </span>
-                                </td>
-                            </ng-container>
-        
-                            <!-- Amount Column -->
-                            <ng-container matColumnDef="amount">
-                                <th mat-header-cell *matHeaderCellDef>
-                                    Amount
-                                </th>
-                                <td mat-cell *matCellDef="let element">
-                                    {{element.amount}}
-                                </td>
-                            </ng-container>
-        
-                            <!-- Rewards Column -->
-                            <ng-container matColumnDef="rewards">
-                                <th mat-header-cell *matHeaderCellDef>
-                                    Rewards
-                                </th>
-                                <td mat-cell *matCellDef="let element">
-                                    {{element.rewards}}
-                                </td>
-                            </ng-container>
-        
+
                             <!-- Date Column -->
                             <ng-container matColumnDef="date">
                                 <th mat-header-cell *matHeaderCellDef>
                                     Date
                                 </th>
                                 <td mat-cell *matCellDef="let element">
-                                    {{element.date}}
+                                    {{ element.date | date }}
                                 </td>
                             </ng-container>
-        
+
+                            <!-- Status Column -->
+                            <ng-container matColumnDef="status">
+                                <th mat-header-cell *matHeaderCellDef>
+                                    Status
+                                </th>
+                                <td mat-cell *matCellDef="let element">
+                                    <span class="daxa-badge pending d-inline-block pointer-link"
+                                        *ngIf="element.status === 'Pending'"
+                                        [routerLink]="['/ecommerce-page/order-details', element._id]">
+                                        {{ element.status }}
+                                    </span>
+                                    <span class="daxa-badge confirmed d-inline-block pointer-link"
+                                          *ngIf="element.status === 'Paid'"
+                                          [routerLink]="['/ecommerce-page/order-details', element._id]">
+                                        {{ element.status }}
+                                    </span>
+                                    <span class="daxa-badge rejected d-inline-block pointer-link"
+                                          *ngIf="element.status === 'Cancelled'"
+                                          [routerLink]="['/ecommerce-page/order-details', element._id]">
+                                        {{ element.status }}
+                                    </span>
+                                </td>
+                            </ng-container>
+
                             <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
                             <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
-        
                         </table>
                     </div>
-                    <mat-paginator [pageSizeOptions]="[10, 20, 30]" showFirstLastButtons></mat-paginator>
+                    <mat-paginator #paginator
+                                   [length]="datasource.totalSize"
+                                   [pageIndex]="datasource.page"
+                                   [pageSize]="datasource.pageSize"
+                                   [pageSizeOptions]="[20, 40, 60, 80, 100]"
+                                   (page)="logEvent($event)">
+
+                    </mat-paginator>
                 </div>
             </mat-card-content>
         </mat-card>
     </div>
 </div>
+
+<ng-template #loading>
+    Loading Please Wait...
+</ng-template>

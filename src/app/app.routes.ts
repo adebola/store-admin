@@ -14,7 +14,6 @@ import { SignInComponent } from './authentication/sign-in/sign-in.component';
 import { AuthenticationComponent } from './authentication/authentication.component';
 import { UserProfileComponent } from './pages/profile-page/user-profile/user-profile.component';
 import { ProfilePageComponent } from './pages/profile-page/profile-page.component';
-import { AddUserComponent } from './pages/users-page/add-user/add-user.component';
 import { UsersListComponent } from './pages/users-page/users-list/users-list.component';
 import { UsersPageComponent } from './pages/users-page/users-page.component';
 import { InvoiceDetailsComponent } from './pages/invoices-page/invoice-details/invoice-details.component';
@@ -27,8 +26,6 @@ import { ECategoriesComponent } from './pages/ecommerce-page/e-categories/e-cate
 import { ECreateSellerComponent } from './pages/ecommerce-page/e-create-seller/e-create-seller.component';
 import { ESellerDetailsComponent } from './pages/ecommerce-page/e-seller-details/e-seller-details.component';
 import { ESellersComponent } from './pages/ecommerce-page/e-sellers/e-sellers.component';
-import { ECustomerDetailsComponent } from './pages/ecommerce-page/e-customer-details/e-customer-details.component';
-import { ECustomersComponent } from './pages/ecommerce-page/e-customers/e-customers.component';
 import { ECreateOrderComponent } from './pages/ecommerce-page/e-create-order/e-create-order.component';
 import { EOrderDetailsComponent } from './pages/ecommerce-page/e-order-details/e-order-details.component';
 import { EOrdersComponent } from './pages/ecommerce-page/e-orders/e-orders.component';
@@ -38,6 +35,7 @@ import { EProductDetailsComponent } from './pages/ecommerce-page/e-product-detai
 import { EProductsListComponent } from './pages/ecommerce-page/e-products-list/e-products-list.component';
 import { EcommercePageComponent } from './pages/ecommerce-page/ecommerce-page.component';
 import {AuthGuard} from "./authentication/auth-guard.service";
+import {UserDetailsComponent} from "./pages/users-page/user-details/user-details.component";
 
 export const routes: Routes = [
     {path: '', component: EcommerceComponent, canActivate: [AuthGuard]},
@@ -49,12 +47,10 @@ export const routes: Routes = [
             {path: '', component: EProductsListComponent},
             {path: 'product-details/:id', component: EProductDetailsComponent},
             {path: 'create-product', component: ECreateProductComponent},
-            {path: 'edit-product', component: EEditProductComponent},
+            {path: 'edit-product/:id', component: EEditProductComponent},
             {path: 'orders', component: EOrdersComponent},
             {path: 'order-details/:id', component: EOrderDetailsComponent},
             {path: 'create-order', component: ECreateOrderComponent},
-            {path: 'customers', component: ECustomersComponent},
-            {path: 'customer-details', component: ECustomerDetailsComponent},
             {path: 'sellers', component: ESellersComponent},
             {path: 'seller-details', component: ESellerDetailsComponent},
             {path: 'create-seller', component: ECreateSellerComponent},
@@ -79,7 +75,7 @@ export const routes: Routes = [
         canActivate: [AuthGuard],
         children: [
             {path: '', component: UsersListComponent},
-            {path: 'add-user', component: AddUserComponent},
+            {path: 'details/:id', component: UserDetailsComponent},
         ]
     },
     {

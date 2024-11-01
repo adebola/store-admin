@@ -45,6 +45,7 @@ import {MatCheckbox} from "@angular/material/checkbox";
 import {SelectionModel} from "@angular/cdk/collections";
 import {MatTooltip} from "@angular/material/tooltip";
 import {SnackbarService} from "../../../shared/service/snackbar.service";
+import {OrderService} from "../../../shared/service/order.service";
 
 @Component({
     selector: 'app-e-product-details',

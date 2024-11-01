@@ -15,7 +15,20 @@ import { CustomizerSettingsService } from '../../../customizer-settings/customiz
 @Component({
     selector: 'app-e-create-order',
     standalone: true,
-    imports: [MatCardModule, MatMenuModule, MatButtonModule, RouterLink, FormsModule, MatFormFieldModule, MatInputModule, MatSelectModule, MatDatepickerModule, MatNativeDateModule, ReactiveFormsModule, FileUploadModule],
+    imports: [
+        MatCardModule,
+        MatMenuModule,
+        MatButtonModule,
+        RouterLink,
+        FormsModule,
+        MatFormFieldModule,
+        MatInputModule,
+        MatSelectModule,
+        MatDatepickerModule,
+        MatNativeDateModule,
+        ReactiveFormsModule,
+        FileUploadModule
+    ],
     templateUrl: './e-create-order.component.html',
     styleUrl: './e-create-order.component.scss'
 })
@@ -31,5 +44,4 @@ export class ECreateOrderComponent {
             this.isToggled = isToggled;
         });
     }
-
 }

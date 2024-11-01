@@ -39,10 +39,36 @@
                 </button>
             </li>
 
+            <li>
+                <button
+                    mat-button
+                    matTooltip="Products"
+                    class="messages-menu-btn p-0"
+                    routerLink="/ecommerce-page"
+                >
+                    <i class="material-symbols-outlined">
+                        grocery
+                    </i>
+                </button>
+            </li>
+
+            <li>
+                <button
+                    mat-button
+                    matTooltip="Orders"
+                    class="messages-menu-btn p-0"
+                    routerLink="/ecommerce-page/orders"
+                >
+                    <i class="material-symbols-outlined">
+                        orders
+                    </i>
+                </button>
+            </li>
 
             <li *ngIf="(authService.user$ | async)">
                 <button
                     mat-button
+                    matTooltip="Log Out"
                     class="messages-menu-btn p-0"
                     (click)="logout()"
                 >
@@ -53,10 +79,11 @@
             </li>
 
 
-            <li  *ngIf="(authService.user$ | async) as user">
+            <li *ngIf="(authService.user$ | async) as user">
                 <button mat-button [matMenuTriggerFor]="profileMenu" class="profile-menu-btn">
                     <ng-container *ngIf="user.imageUrl && user.imageUrl.length > 0; else emptyImage">
-                        <img ngSrc="{{user.imageUrl}}" class="border-radius transition" alt="product-image" width="70" height="70">
+                        <img ngSrc="{{user.imageUrl}}" class="border-radius transition" alt="product-image" width="70"
+                             height="70">
                     </ng-container>
                     <span class="status d-inline-block rounded-circle position-absolute"></span>
                 </button>
@@ -65,7 +92,8 @@
                         <div class="menu-header d-flex align-items-center">
 
                             <ng-container *ngIf="user.imageUrl && user.imageUrl.length > 0; else emptyImage">
-                                <img ngSrc="{{user.imageUrl}}" class="border-radius transition" alt="product-image" width="70" height="70">
+                                <img ngSrc="{{user.imageUrl}}" class="border-radius transition" alt="product-image"
+                                     width="70" height="70">
                             </ng-container>
 
                             <ng-template #emptyImage>
@@ -73,7 +101,7 @@
                             </ng-template>
 
                             <div class="title">
-                                {{user.fullName}}
+                                {{ user.fullName }}
                             </div>
                         </div>
                         <ul class="menu-body pl-0 mb-0 mt-0 list-unstyled">

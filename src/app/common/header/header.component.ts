@@ -6,11 +6,22 @@ import { MatButtonModule } from '@angular/material/button';
 import { Router, RouterLink, RouterLinkActive} from '@angular/router';
 import { CustomizerSettingsService } from '../../customizer-settings/customizer-settings.service';
 import {AuthService} from "../../authentication/auth.service";
+import {MatTooltip} from "@angular/material/tooltip";
 
 @Component({
     selector: 'app-header',
     standalone: true,
-    imports: [NgClass, MatMenuModule, MatButtonModule, RouterLink, RouterLinkActive, AsyncPipe, NgIf, NgOptimizedImage],
+    imports: [
+        NgClass,
+        MatMenuModule,
+        MatButtonModule,
+        RouterLink,
+        RouterLinkActive,
+        AsyncPipe,
+        NgIf,
+        NgOptimizedImage,
+        MatTooltip
+    ],
     templateUrl: './header.component.html',
     styleUrl: './header.component.scss'
 })

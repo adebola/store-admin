@@ -6,6 +6,12 @@ export interface Bundle {
     enabled: boolean;
 }
 
+export interface BundleItem {
+    id: string
+    unit: string;
+    price: number;
+}
+
 export interface Product {
     _id: string;
     name: string;

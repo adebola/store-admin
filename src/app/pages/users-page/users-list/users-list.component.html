@@ -1,7 +1,7 @@
 <!-- Breadcrumb -->
 <div class="breadcrumb-card mb-25 d-md-flex align-items-center justify-content-between">
     <h5 class="mb-0">
-        Users List
+        Customers
     </h5>
     <ol class="breadcrumb list-unstyled mt-0 mb-0 pl-0">
         <li class="breadcrumb-item position-relative">
@@ -11,63 +11,56 @@
             </a>
         </li>
         <li class="breadcrumb-item position-relative">
-            Users
+            E-Commerce
         </li>
         <li class="breadcrumb-item position-relative">
-            Users List
+            Customers
         </li>
     </ol>
 </div>
 
-<!-- Users -->
+<!-- Customers -->
 <mat-card
-    class="daxa-card users-card mb-25 border-radius bg-white border-none d-block"
-    [class.rtl-enabled]="themeService.isRTLEnabled()"
->
+    class="daxa-card customers-card mb-25 border-radius bg-white border-none d-block"
+    [class.rtl-enabled]="themeService.isRTLEnabled()">
     <mat-card-header>
         <mat-card-title>
             <form class="search-box position-relative">
                 <i class="material-symbols-outlined">
                     search
                 </i>
-                <input type="text" class="input-search d-block w-100 border-none outline-0" placeholder="Search user..." (keyup)="applyFilter($event)" #input>
+                <input type="text" class="input-search d-block w-100 border-none outline-0"
+                       placeholder="Search customer..." #input>
             </form>
         </mat-card-title>
-        <mat-card-subtitle>
-            <a mat-button class="add-new-btn" routerLink="/users/add-user">
-                + Add New User
-            </a>
-        </mat-card-subtitle>
     </mat-card-header>
     <mat-card-content>
-        <div class="users-table">
+        <div class="customers-table">
             <div class="table-responsive">
-                <table mat-table [dataSource]="dataSource">
+                <table mat-table [dataSource]="datasource" *ngIf="!(datasource.loading$ | async); else loading">
 
                     <!-- User ID Column -->
-                    <ng-container matColumnDef="userID">
-                        <th mat-header-cell *matHeaderCellDef>
-                            User ID
-                        </th>
-                        <td mat-cell *matCellDef="let element">
-                            {{element.userID}}
-                        </td>
-                    </ng-container>
-
-                    <!-- User Column -->
-                    <ng-container matColumnDef="user">
+                    <ng-container matColumnDef="id">
                         <th mat-header-cell *matHeaderCellDef>
                             User
                         </th>
-                        <td mat-cell *matCellDef="let element" class="text-black">
-                            <div class="info d-flex align-items-center">
+                        <td mat-cell *matCellDef="let element">
+                            <div class="product-info d-flex align-items-center">
                                 <div class="image">
-                                    <img [src]="element.user.img" alt="user-image">
+                                    <img ngSrc="{{(element.imageUrl) ? element.imageUrl : 'images/users/user1.jpg'}}"
+                                         class="rounded-circle" alt="product-image" width="30" height="30">
                                 </div>
-                                <span class="d-block fw-medium">
-                                    {{element.user.name}}
-                                </span>
                             </div>
+                        </td>
+                    </ng-container>
+
+                    <!-- Customer Name -->
+                    <ng-container matColumnDef="name">
+                        <th mat-header-cell *matHeaderCellDef>
+                            Name
+                        </th>
+                        <td mat-cell *matCellDef="let element">
+                            {{ element.fullName }}
                         </td>
                     </ng-container>
 
@@ -77,47 +70,34 @@
                             Email
                         </th>
                         <td mat-cell *matCellDef="let element">
-                            {{element.email}}
+                            <a mat-button [routerLink]="['/users/details', element.id]">
+                                {{ element.email }}
+                            </a>
                         </td>
                     </ng-container>
 
-                    <!-- Location Column -->
-                    <ng-container matColumnDef="location">
-                        <th mat-header-cell *matHeaderCellDef>
-                            Location
-                        </th>
-                        <td mat-cell *matCellDef="let element">
-                            {{element.location}}
-                        </td>
-                    </ng-container>
-
-                    <!-- Phone Column -->
+                    <!-- Telephone Column -->
                     <ng-container matColumnDef="phone">
                         <th mat-header-cell *matHeaderCellDef>
                             Phone
                         </th>
-                        <td mat-cell *matCellDef="let element" class="text-black">
-                            {{element.phone}}
+                        <td mat-cell *matCellDef="let element">
+                            {{ element.telephoneNumber }}
                         </td>
                     </ng-container>
 
-                    <!-- Projects Column -->
-                    <ng-container matColumnDef="projects">
+                    <!-- Status Column -->
+                    <ng-container matColumnDef="verified">
                         <th mat-header-cell *matHeaderCellDef>
-                            Projects
+                            Verified
                         </th>
                         <td mat-cell *matCellDef="let element">
-                            {{element.projects}}
-                        </td>
-                    </ng-container>
-
-                    <!-- Join Date Column -->
-                    <ng-container matColumnDef="joinDate">
-                        <th mat-header-cell *matHeaderCellDef>
-                            Join Date
-                        </th>
-                        <td mat-cell *matCellDef="let element">
-                            {{element.joinDate}}
+                            <span class="daxa-badge active d-inline-block" *ngIf="element.verified">
+                                {{ element.verified }}
+                            </span>
+                            <span class="daxa-badge deactive d-inline-block" *ngIf="!element.verified">
+                                {{ element.verified }}
+                            </span>
                         </td>
                     </ng-container>
 
@@ -128,31 +108,39 @@
                         </th>
                         <td mat-cell *matCellDef="let element">
                             <div class="action-info">
-                                <button type="button" mat-button matTooltip="View" matTooltipPosition="above">
+                                <a mat-button [routerLink]="['/users/details', element.id]"
+                                   matTooltip="View Customer"
+                                   matTooltipPosition="above">
                                     <i class="material-symbols-outlined">
-                                        {{element.action.view}}
+                                        visibility
                                     </i>
-                                </button>
-                                <button type="button" mat-button matTooltip="Delete" matTooltipPosition="above">
-                                    <i class="material-symbols-outlined">
-                                        {{element.action.delete}}
-                                    </i>
-                                </button>
+                                </a>
                             </div>
                         </td>
                     </ng-container>
 
                     <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
                     <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
-    
+
                     <!-- Row shown when there is no matching data. -->
                     <tr class="mat-row" *matNoDataRow>
-                        <td class="mat-cell" colspan="4">No data matching the filter "{{input.value}}"</td>
+                        <td class="mat-cell" colspan="4">No data matching the filter "{{ input.value }}"</td>
                     </tr>
 
                 </table>
             </div>
-            <mat-paginator [pageSizeOptions]="[10, 20, 30]" showFirstLastButtons></mat-paginator>
+            <mat-paginator #paginator
+                           [length]="datasource.totalSize"
+                           [pageIndex]="datasource.page"
+                           [pageSize]="datasource.pageSize"
+                           [pageSizeOptions]="[20, 40, 60, 80, 100]"
+                           (page)="logEvent($event)"
+            >
+            </mat-paginator>
         </div>
     </mat-card-content>
 </mat-card>
+
+<ng-template #loading>
+    Loading Please Wait...
+</ng-template>

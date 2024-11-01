@@ -27,8 +27,19 @@ export class User {
 export interface BackEndUser {
     id: string;
     email: string;
+    verified: boolean;
     fullName: string;
     telephoneNumber: string;
     address: string;
     imageUrl: string;
+    joined: Date;
+}
+
+export interface BackEndUserPage {
+    current: number;
+    size: number;
+    current_size: number;
+    pages: number;
+    count: number;
+    users: BackEndUser[]
 }

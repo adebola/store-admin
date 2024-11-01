@@ -1,21 +1,27 @@
 .mat-mdc-card {
     &.daxa-card {
-        &.users-card {
+        &.customers-card {
             .mat-mdc-card-content {
                 margin: {
                     left: -20px;
                     right: -20px;
                 };
-                .users-table {
+                .customers-table {
                     .mat-mdc-table {
                         .mat-mdc-header-cell {
                             &:last-child {
                                 text-align: right;
                             }
+                            &:first-child {
+                                padding-right: 0;
+                            }
                         }
                         .mat-mdc-cell {
                             &:last-child {
                                 text-align: right;
+                            }
+                            &:first-child {
+                                padding-right: 0;
                             }
                         }
                         .info {
@@ -34,16 +40,28 @@
             }
             &.rtl-enabled {
                 .mat-mdc-card-content {
-                    .users-table {
+                    .customers-table {
                         .mat-mdc-table {
                             .mat-mdc-header-cell {
                                 &:last-child {
                                     text-align: left;
                                 }
+                                &:first-child {
+                                    padding: {
+                                        right: 20px;
+                                        left: 0;
+                                    };
+                                }
                             }
                             .mat-mdc-cell {
                                 &:last-child {
                                     text-align: left;
+                                }
+                                &:first-child {
+                                    padding: {
+                                        right: 20px;
+                                        left: 0;
+                                    };
                                 }
                             }
                             .info {
@@ -64,9 +82,9 @@
 ::ng-deep {
     .mat-mdc-card {
         &.daxa-card {
-            &.users-card {
+            &.customers-card {
                 .mat-mdc-card-content {
-                    .users-table {
+                    .customers-table {
                         .mat-mdc-paginator {
                             padding: {
                                 top: 15px;
@@ -86,12 +104,10 @@
 
     .mat-mdc-card {
         &.daxa-card {
-            &.users-card {
+            &.customers-card {
                 .mat-mdc-card-header {
-                    .mat-mdc-button {
-                        &.add-new-btn {
-                            margin-top: 12px;
-                        }
+                    .search-box {
+                        margin-bottom: 12px;
                     }
                 }
                 .mat-mdc-card-content {
@@ -99,7 +115,7 @@
                         left: -15px;
                         right: -15px;
                     };
-                    .users-table {
+                    .customers-table {
                         .mat-mdc-table {
                             .info {
                                 .image {
@@ -111,12 +127,25 @@
                 }
                 &.rtl-enabled {
                     .mat-mdc-card-content {
-                        .users-table {
+                        .customers-table {
                             .mat-mdc-table {
+                                .mat-mdc-header-cell {
+                                    &:first-child {
+                                        padding: {
+                                            right: 15px;
+                                        };
+                                    }
+                                }
+                                .mat-mdc-cell {
+                                    &:first-child {
+                                        padding: {
+                                            right: 15px;
+                                        };
+                                    }
+                                }
                                 .info {
                                     .image {
                                         margin: {
-                                            right: 0;
                                             left: 8px;
                                         };
                                     }
@@ -131,14 +160,14 @@
     ::ng-deep {
         .mat-mdc-card {
             &.daxa-card {
-                &.users-card {
+                &.customers-card {
                     .mat-mdc-card-header {
                         .mat-mdc-card-header-text {
                             display: block;
                         }
                     }
                     .mat-mdc-card-content {
-                        .users-table {
+                        .customers-table {
                             .mat-mdc-paginator {
                                 padding: {
                                     top: 10px;
@@ -160,12 +189,34 @@
 
     .mat-mdc-card {
         &.daxa-card {
-            &.users-card {
+            &.customers-card {
                 .mat-mdc-card-content {
                     margin: {
                         left: -20px;
                         right: -20px;
                     };
+                }
+                &.rtl-enabled {
+                    .mat-mdc-card-content {
+                        .customers-table {
+                            .mat-mdc-table {
+                                .mat-mdc-header-cell {
+                                    &:first-child {
+                                        padding: {
+                                            right: 20px;
+                                        };
+                                    }
+                                }
+                                .mat-mdc-cell {
+                                    &:first-child {
+                                        padding: {
+                                            right: 20px;
+                                        };
+                                    }
+                                }
+                            }
+                        }
+                    }
                 }
             }
         }
@@ -173,9 +224,9 @@
     ::ng-deep {
         .mat-mdc-card {
             &.daxa-card {
-                &.users-card {
+                &.customers-card {
                     .mat-mdc-card-content {
-                        .users-table {
+                        .customers-table {
                             .mat-mdc-paginator {
                                 padding: {
                                     left: 20px;

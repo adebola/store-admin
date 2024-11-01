@@ -42,14 +42,28 @@ export class OrderDatasource implements DataSource<Order> {
     disconnect(collectionViewer: CollectionViewer): void {
         this.orderSubject.complete();
         this.loadingSubject.complete();
-    }
-
-    loadOrders(pageIndex = 1, pageSize = 20, searchString: string | null = null) {
-        //this.loadingSubject.next(true);
 
         if (this.subscription) {
             this.subscription.unsubscribe();
         }
+    }
+
+    loadUserOrders(id: string,  pageIndex = 1, pageSize = 20, searchString: string | null = null) {
+        //this.loadingSubject.next(true);
+
+        let obs$: Observable<any>;
+
+        if (searchString && searchString.length > 0) {
+            obs$ = this.orderService.searchUser(id, pageIndex, pageSize, searchString);
+        } else {
+            obs$ = this.orderService.getUserOrders(id,  pageIndex, pageSize);
+        }
+
+        this.subscribeToOrders(obs$);
+    }
+
+    loadOrders(pageIndex = 1, pageSize = 20, searchString: string | null = null) {
+        //this.loadingSubject.next(true);
 
         let obs$: Observable<any>;
 
@@ -59,7 +73,15 @@ export class OrderDatasource implements DataSource<Order> {
             obs$ = this.orderService.getOrders(pageIndex, pageSize);
         }
 
-        this.subscription = obs$.pipe(
+        this.subscribeToOrders(obs$);
+    }
+
+    private subscribeToOrders(o$: Observable<any>) {
+        if (this.subscription) {
+            this.subscription.unsubscribe();
+        }
+
+        this.subscription = o$.pipe(
             catchError(() => of(null)),
             finalize(() => this.loadingSubject.next(false))
         ).subscribe(page => {
