@@ -48,9 +48,9 @@
                                                 alt="user-image" width="200" height="200">
                                         </div>
                                         <div>
-                                            <h6 class="fw-normal">
+                                            <a class="fw-normal" [routerLink]="['/users/details', t.user_details[0].id]">
                                                 {{ t.user_details[0].fullName }}
-                                            </h6>
+                                            </a>
                                             <span class="d-block text-body">
                                             {{ t.orders | number}} Orders
                                         </span>

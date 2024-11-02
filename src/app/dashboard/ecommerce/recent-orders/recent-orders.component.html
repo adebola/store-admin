@@ -56,8 +56,12 @@
                                         class="rounded-circle mr-15" alt="product-image" width="50" height="50">
                                 </div>
                                 <div class="info">
-                                    <a routerLink="/ecommerce-page/product-details" class="d-inline-block">
-                                        {{element.user ? element.user.fullName : 'Anonymous' }}
+                                    <a [routerLink]="['/users/details', element.user._id]" class="d-inline-block" *ngIf="element.user">
+                                        {{ element.user.fullName }}
+                                    </a>
+
+                                    <a class="d-inline-block" *ngIf="!element.user">
+                                        Anonymous
                                     </a>
                                 </div>
                             </div>
