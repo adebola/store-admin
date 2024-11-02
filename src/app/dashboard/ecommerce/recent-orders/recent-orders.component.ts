@@ -40,7 +40,7 @@ export class RecentOrdersComponent implements OnInit, AfterViewInit {
     displayedColumns: string[] = ['Id', 'price', 'date', 'status'];
     dataSource: OrderDatasource;
 
-    @Input() standalone = false;
+    @Input() standalone = true;
 
     constructor(public themeService: CustomizerSettingsService, private orderService: OrderService) {
         this.themeService.isToggled$.subscribe(isToggled => {

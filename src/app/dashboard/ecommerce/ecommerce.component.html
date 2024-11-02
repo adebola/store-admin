@@ -57,25 +57,9 @@
         <!-- Top Sellers -->
         <app-top-buyers />
     </div>
-<!--    <div class="col-lg-12 col-xxxl-4">-->
-<!--        <div class="row">-->
-<!--            <div class="col-lg-6 col-xxxl-12">-->
-
-<!--                &lt;!&ndash; Top Sales Locations &ndash;&gt;-->
-<!--                <app-top-sales-locations />-->
-
-<!--            </div>-->
-<!--            <div class="col-lg-6 col-xxxl-12">-->
-
-<!--                &lt;!&ndash; Revenue &ndash;&gt;-->
-<!--                <app-revenue />-->
-
-<!--            </div>-->
-<!--        </div>-->
-<!--    </div>-->
     <div class="col-lg-12">
         <!-- Recent Orders -->
-        <app-recent-orders />
+        <app-recent-orders [standalone]="false"/>
 
     </div>
 </div>

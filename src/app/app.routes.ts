@@ -5,15 +5,12 @@ import { InternalErrorComponent } from './common/internal-error/internal-error.c
 import { ChangePasswordComponent } from './settings/change-password/change-password.component';
 import { AccountSettingsComponent } from './settings/account-settings/account-settings.component';
 import { SettingsComponent } from './settings/settings.component';
-import { MyProfileComponent } from './my-profile/my-profile.component';
 import { ConfirmEmailComponent } from './authentication/confirm-email/confirm-email.component';
 import { ResetPasswordComponent } from './authentication/reset-password/reset-password.component';
 import { ForgotPasswordComponent } from './authentication/forgot-password/forgot-password.component';
 import { SignUpComponent } from './authentication/sign-up/sign-up.component';
 import { SignInComponent } from './authentication/sign-in/sign-in.component';
 import { AuthenticationComponent } from './authentication/authentication.component';
-import { UserProfileComponent } from './pages/profile-page/user-profile/user-profile.component';
-import { ProfilePageComponent } from './pages/profile-page/profile-page.component';
 import { UsersListComponent } from './pages/users-page/users-list/users-list.component';
 import { UsersPageComponent } from './pages/users-page/users-page.component';
 import { InvoiceDetailsComponent } from './pages/invoices-page/invoice-details/invoice-details.component';
@@ -26,9 +23,7 @@ import { ECategoriesComponent } from './pages/ecommerce-page/e-categories/e-cate
 import { ECreateSellerComponent } from './pages/ecommerce-page/e-create-seller/e-create-seller.component';
 import { ESellerDetailsComponent } from './pages/ecommerce-page/e-seller-details/e-seller-details.component';
 import { ESellersComponent } from './pages/ecommerce-page/e-sellers/e-sellers.component';
-import { ECreateOrderComponent } from './pages/ecommerce-page/e-create-order/e-create-order.component';
 import { EOrderDetailsComponent } from './pages/ecommerce-page/e-order-details/e-order-details.component';
-import { EOrdersComponent } from './pages/ecommerce-page/e-orders/e-orders.component';
 import { EEditProductComponent } from './pages/ecommerce-page/e-edit-product/e-edit-product.component';
 import { ECreateProductComponent } from './pages/ecommerce-page/e-create-product/e-create-product.component';
 import { EProductDetailsComponent } from './pages/ecommerce-page/e-product-details/e-product-details.component';
@@ -36,6 +31,7 @@ import { EProductsListComponent } from './pages/ecommerce-page/e-products-list/e
 import { EcommercePageComponent } from './pages/ecommerce-page/ecommerce-page.component';
 import {AuthGuard} from "./authentication/auth-guard.service";
 import {UserDetailsComponent} from "./pages/users-page/user-details/user-details.component";
+import {RecentOrdersComponent} from "./dashboard/ecommerce/recent-orders/recent-orders.component";
 
 export const routes: Routes = [
     {path: '', component: EcommerceComponent, canActivate: [AuthGuard]},
@@ -48,9 +44,8 @@ export const routes: Routes = [
             {path: 'product-details/:id', component: EProductDetailsComponent},
             {path: 'create-product', component: ECreateProductComponent},
             {path: 'edit-product/:id', component: EEditProductComponent},
-            {path: 'orders', component: EOrdersComponent},
+            {path: 'orders', component: RecentOrdersComponent},
             {path: 'order-details/:id', component: EOrderDetailsComponent},
-            {path: 'create-order', component: ECreateOrderComponent},
             {path: 'sellers', component: ESellersComponent},
             {path: 'seller-details', component: ESellerDetailsComponent},
             {path: 'create-seller', component: ECreateSellerComponent},
@@ -79,14 +74,6 @@ export const routes: Routes = [
         ]
     },
     {
-        path: 'profile',
-        component: ProfilePageComponent,
-        canActivate: [AuthGuard],
-        children: [
-            {path: '', component: UserProfileComponent},
-        ]
-    },
-    {
         path: 'authentication',
         component: AuthenticationComponent,
         children: [
@@ -96,11 +83,6 @@ export const routes: Routes = [
             {path: 'reset-password', component: ResetPasswordComponent},
             {path: 'confirm-email', component: ConfirmEmailComponent},
         ]
-    },
-    {
-        path: 'my-profile',
-        component: MyProfileComponent,
-        canActivate: [AuthGuard]
     },
     {
         path: 'settings',
