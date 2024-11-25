@@ -1,7 +1,7 @@
 <!-- Breadcrumb -->
 <div class="breadcrumb-card mb-25 d-md-flex align-items-center justify-content-between">
     <h5 class="mb-0">
-        Categories
+        Audit Logs
     </h5>
     <ol class="breadcrumb list-unstyled mt-0 mb-0 pl-0">
         <li class="breadcrumb-item position-relative">
@@ -14,7 +14,7 @@
             E-Commerce
         </li>
         <li class="breadcrumb-item position-relative">
-            Categories
+            Audit Logs
         </li>
     </ol>
 </div>
@@ -30,76 +30,57 @@
                 <i class="material-symbols-outlined">
                     search
                 </i>
-                <input type="text" class="input-search d-block w-100 border-none outline-0" placeholder="Search category..." #input>
+                <input type="text" class="input-search d-block w-100 border-none outline-0" placeholder="Search audits..." #input>
             </form>
         </mat-card-title>
-        <mat-card-subtitle>
-            <a mat-button class="add-new-btn" routerLink="/ecommerce-page/create-category">
-                + Add New Category
-            </a>
-        </mat-card-subtitle>
     </mat-card-header>
     <mat-card-content>
         <div class="categories-table">
             <div class="table-responsive">
                 <table mat-table [dataSource]="dataSource">
 
-                    <!-- Image Column -->
-                    <ng-container matColumnDef="image">
+                    <!-- Action Column -->
+                    <ng-container matColumnDef="event">
                         <th mat-header-cell *matHeaderCellDef>
-                            Image
-                        </th>
-                        <td mat-cell *matCellDef="let element">
-                            <div class="info">
-                                <img ngSrc="{{element.imageUrl}}" alt="category-image" width="40" height="40">
-                            </div>
-                        </td>
-                    </ng-container>
-
-                    <!-- Name Column -->
-                    <ng-container matColumnDef="name">
-                        <th mat-header-cell *matHeaderCellDef>
-                            Name
+                            Event
                         </th>
                         <td mat-cell *matCellDef="let element" class="text-black fw-medium">
-                            {{element.name}}
+                            {{element.action}}
                         </td>
                     </ng-container>
 
-
-                    <!-- Status Column -->
-                    <ng-container matColumnDef="status">
+                    <!-- User Column -->
+                    <ng-container matColumnDef="user">
                         <th mat-header-cell *matHeaderCellDef>
-                            Status
+                            User
                         </th>
-                        <td mat-cell *matCellDef="let element">
-                            <span class="daxa-badge active d-inline-block" *ngIf="element.enabled">
-                                Active
-                            </span>
-                            <span class="daxa-badge deactive d-inline-block" *ngIf="!element.enabled">
-                               Deactive
-                            </span>
+                        <td mat-cell *matCellDef="let element" class="text-black fw-medium">
+                            {{element.user}}
                         </td>
                     </ng-container>
 
-                    <!-- Action Column -->
+                    <!-- Date Column -->
+                    <ng-container matColumnDef="date">
+                        <th mat-header-cell *matHeaderCellDef>
+                            Event Date
+                        </th>
+                        <td mat-cell *matCellDef="let element" class="text-black fw-medium">
+                            {{element.date | date: 'dd/MM/yyyy : HH:mm'}}
+                        </td>
+                    </ng-container>
+
                     <ng-container matColumnDef="action">
                         <th mat-header-cell *matHeaderCellDef>
                             Action
                         </th>
 
                         <td mat-cell *matCellDef="let element">
-                            <div class="action-info">
-                                <a mat-button [routerLink]="['/ecommerce-page/edit-category',  element._id]" matTooltip="Edit Category" matTooltipPosition="above">
+                                <div class="info">
+                                <a mat-button [routerLink]="['/ecommerce-page/edit-category',  element.id]" matTooltip="View Audit" matTooltipPosition="above">
                                     <i class="material-symbols-outlined">
-                                     edit
+                                        visibility
                                     </i>
                                 </a>
-                                <button type="button" mat-button matTooltip="Delete" matTooltipPosition="above" (click)="deleteCategory(element._id)">
-                                    <i class="material-symbols-outlined">
-                                       delete
-                                    </i>
-                                </button>
                             </div>
                         </td>
                     </ng-container>

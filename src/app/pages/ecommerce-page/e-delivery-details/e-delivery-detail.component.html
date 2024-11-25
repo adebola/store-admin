@@ -1,11 +1,11 @@
 <!-- Breadcrumb -->
 <div class="breadcrumb-card mb-25 d-md-flex align-items-center justify-content-between">
     <h5 class="mb-0" *ngIf="id">
-        Edit Category
+        Edit Delivery Zone
     </h5>
 
     <h5 class="mb-0" *ngIf="!id">
-        Create Category
+        Edit Delivery Zone
     </h5>
     <ol class="breadcrumb list-unstyled mt-0 mb-0 pl-0">
         <li class="breadcrumb-item position-relative">
@@ -21,10 +21,10 @@
             Categories
         </li>
         <li class="breadcrumb-item position-relative" *ngIf="id">
-            Edit Category
+            Edit Delivery Zone
         </li>
         <li class="breadcrumb-item position-relative" *ngIf="!id">
-            Create Category
+            Create Delivery Zone
         </li>
     </ol>
 </div>
@@ -32,65 +32,44 @@
 <!-- Edit Product -->
 <mat-card class="daxa-card edit-product-card mb-25 border-radius bg-white border-none d-block">
     <mat-card-content>
-        <form [formGroup]="categoryForm" (ngSubmit)="onSubmit(categoryForm)">
+        <form [formGroup]="zoneForm" (ngSubmit)="onSubmit(zoneForm)">
             <div class="row">
-                <div class="profile-content mb-5">
-                    <div class="d-md-flex align-items-end justify-content-between">
-                        <div class="d-md-flex align-items-end">
-                            <div class="image position-relative">
-                                <img ngSrc="{{imageUrl}}" alt="profile-image" width="300" height="300">
-
-                                <input (change)="onFileChange($event)" type="file" style="margin: 20px"/>
-
-                                <!--                                <button mat-flat-button color="primary" type="button" style="margin: 20px;">Select Image-->
-                                <!--                                    <input (change)="onFileChange($event)"-->
-                                <!--                                           style="opacity: 0; position:absolute; width: 100%; height: 100%; margin: 20px;"-->
-                                <!--                                           type="file"/>-->
-                                <!--                                </button>-->
-                            </div>
-                        </div>
-                    </div>
-                </div>
                 <div class="col-lg-12">
                     <div class="row">
                         <div class="col-sm-6">
                             <div class="mb-25">
                                 <label class="main-label d-block lh-1 text-black">
-                                    Category Name
+                                   Delivery Zone Name
                                 </label>
                                 <mat-form-field>
                                     <mat-label>
-                                        Category name
+                                        Delivery Zone Name
                                     </mat-label>
                                     <input matInput formControlName="name">
                                 </mat-form-field>
                             </div>
                         </div>
-<!--                        <div class="col-sm-6">-->
-<!--                            <div class="mb-25">-->
-<!--                                <label class="main-label d-block lh-1 text-black">-->
-<!--                                    Product Category-->
-<!--                                </label>-->
-<!--                                <mat-form-field>-->
-<!--                                    <mat-label>-->
-<!--                                        Select-->
-<!--                                    </mat-label>-->
-<!--                                    <mat-select formControlName="category">-->
-<!--                                        <mat-option *ngFor="let category of categories$ | async" [value]="category">-->
-<!--                                            {{ category }}-->
-<!--                                        </mat-option>-->
-<!--                                    </mat-select>-->
-<!--                                </mat-form-field>-->
-<!--                            </div>-->
-<!--                        </div>-->
-                        <div class="col-sm-12">
+                        <div class="col-sm-6">
                             <div class="mb-25">
                                 <label class="main-label d-block lh-1 text-black">
-                                    Category Description
+                                    Zone Price
                                 </label>
                                 <mat-form-field>
                                     <mat-label>
-                                        Category description
+                                       Delivery Zone Price
+                                    </mat-label>
+                                    <input matInput formControlName="price" type="number">
+                                </mat-form-field>
+                            </div>
+                        </div>
+                        <div class="col-sm-12">
+                            <div class="mb-25">
+                                <label class="main-label d-block lh-1 text-black">
+                                    Delivery Zone Description
+                                </label>
+                                <mat-form-field>
+                                    <mat-label>
+                                        Delivery Zone Description
                                     </mat-label>
                                     <textarea matInput placeholder="Type here..."
                                               formControlName="description"></textarea>

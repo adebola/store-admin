@@ -20,9 +20,11 @@ import {catchError} from "rxjs/operators";
 import {HttpErrorResponse} from "@angular/common/http";
 import {SnackbarService} from "../../../shared/service/snackbar.service";
 import {Category} from "../../../shared/model/category.model";
+import {DeliveryService} from "../../../shared/service/delivery.service";
+import {Delivery} from "../../../shared/model/delivery.model";
 
 @Component({
-    selector: 'app-e-create-category',
+    selector: 'app-e-delivery-detail',
     standalone: true,
     imports: [
         MatCardModule,
@@ -42,16 +44,14 @@ import {Category} from "../../../shared/model/category.model";
         NgIf,
         NgOptimizedImage,
     ],
-    templateUrl: './e-create-category.component.html',
-    styleUrl: './e-create-category.component.scss'
+    templateUrl: './e-delivery-detail.component.html',
+    styleUrl: './e-delivery-detail.component.scss'
 })
-export class ECreateCategoryComponent implements OnInit, OnDestroy {
+export class EDeliveryDetailComponent implements OnInit, OnDestroy {
     public id: string;
-    public categoryForm: FormGroup;
+    public zoneForm: FormGroup;
     private destroyRef = inject(DestroyRef);
 
-    private file: File | null = null;
-    public imageUrl: string | ArrayBuffer | null = '/images/products/product-details1.jpg';
 
     private loadingSubject = new BehaviorSubject<boolean>(false);
     loading$ = this.loadingSubject.asObservable();
@@ -63,7 +63,7 @@ export class ECreateCategoryComponent implements OnInit, OnDestroy {
         private router: Router,
         private route: ActivatedRoute,
         private snackbarService: SnackbarService,
-        private categoryService: CategoryService,
+        private deliveryService: DeliveryService,
         public themeService: CustomizerSettingsService,
         @Inject(FormBuilder) private fb: FormBuilder
     ) {
@@ -81,40 +81,22 @@ export class ECreateCategoryComponent implements OnInit, OnDestroy {
         this.loadingSubject.complete();
     }
 
-    onFileChange($event: Event) {
-        const fileInput = $event.target as HTMLInputElement;
-
-        if (fileInput.files && fileInput.files[0]) {
-            this.file = fileInput.files[0];
-            const reader = new FileReader();
-
-            reader.onload = (e) => {
-                this.imageUrl = reader.result;
-            };
-
-            reader.readAsDataURL(this.file);
-        }
-    }
-
     onSubmit(form: FormGroup) {
         if (!form.valid) {
             this.snackbarService.message('Please fill all the fields');
         }
 
-        if (!this.file && !this.id) {
-            this.snackbarService.message('Please select an Image for the category');
-            return;
-        }
 
         const name = form.value.name;
         const description = form.value.description;
+        const price = form.value.price;
 
-        let ob$: Observable<Category>;
+        let ob$: Observable<any>;
 
         if (this.id) { // Update
-            ob$ = this.categoryService.updateCategory({name: name, description: description}, this.file, this.id);
+            ob$ = this.deliveryService.updateDeliveryZone(this.id, {name: name, price: price, description: description});
         } else { // Create
-            ob$ = this.categoryService.createCategory({name: name, description: description}, this.file as File);
+            ob$ = this.deliveryService.createDeliveryZone({name: name, price: price, description: description});
         }
 
         this.loadingSubject.next(true);
@@ -126,34 +108,35 @@ export class ECreateCategoryComponent implements OnInit, OnDestroy {
                     this.loadingSubject.next(false)
                 }),
                 catchError((error: HttpErrorResponse) => {
-                    const message = 'Error uploading Image file, make sure it is an image file and not larger than 2MB';
+                    const message = 'Error creating delivery zone';
                     this.snackbarService.message(message + ' : ' + error.message);
                     return throwError(() => new Error(message));
                 })
             ).subscribe(o => {
-            this.snackbarService.message('Category created / updated successfully');
-            this.router.navigate(['/ecommerce-page/categories']).then(r => {
+            this.snackbarService.message('Delivery Zone created / updated successfully');
+            this.router.navigate(['/ecommerce-page/deliveries']).then(r => {
             });
         });
     }
 
     private createForm() {
         if (this.id) {
-            this.categoryService.getCategoryById(this.id)
+            this.deliveryService.getDeliveryZoneById(this.id)
                 .pipe(
                     takeUntilDestroyed(this.destroyRef),
                 )
-                .subscribe(category => {
-                    this.imageUrl = category.imageUrl;
-                    this.categoryForm = this.fb.group({
-                        name: [category.name, Validators.required],
-                        description: [category.description, Validators.required],
+                .subscribe(d => {
+                    this.zoneForm = this.fb.group({
+                        name: [d.name, Validators.required],
+                        description: [d.description, Validators.required],
+                        price: [d.price, Validators.required],
                     });
                 })
         } else {
-            this.categoryForm = this.fb.group({
+            this.zoneForm = this.fb.group({
                 name: [null, Validators.required],
                 description: [null, Validators.required],
+                price: [null, Validators.required],
             });
         }
     }

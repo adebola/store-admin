@@ -1,4 +1,4 @@
-import {NgIf, NgOptimizedImage} from '@angular/common';
+import {CurrencyPipe, NgIf, NgOptimizedImage} from '@angular/common';
 import {AfterViewInit, Component, ElementRef, OnInit, ViewChild} from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
@@ -9,13 +9,13 @@ import { RouterLink } from '@angular/router';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { CustomizerSettingsService } from '../../../customizer-settings/customizer-settings.service';
-import {CategoryDatasource} from "./category.datasource";
-import {CategoryService} from "../../../shared/service/category.service";
+import {DeliveryDatasource} from "./delivery.datasource";
 import {debounceTime, distinctUntilChanged, fromEvent, Subscription} from "rxjs";
 import {tap} from "rxjs/operators";
+import {DeliveryService} from "../../../shared/service/delivery.service";
 
 @Component({
-    selector: 'app-e-categories',
+    selector: 'app-e-deliveries',
     standalone: true,
     imports: [
         MatCardModule,
@@ -27,21 +27,21 @@ import {tap} from "rxjs/operators";
         NgIf,
         MatCheckboxModule,
         MatTooltipModule,
-        NgOptimizedImage
+        CurrencyPipe,
     ],
-    templateUrl: './e-categories.component.html',
-    styleUrl: './e-categories.component.scss'
+    templateUrl: './e-deliveries.component.html',
+    styleUrl: './e-deliveries.component.scss'
 })
-export class ECategoriesComponent implements OnInit, AfterViewInit{
-    displayedColumns: string[] = ['image', 'name', 'status', 'action'];
-    dataSource: CategoryDatasource;
+export class EDeliveriesComponent implements OnInit, AfterViewInit{
+    displayedColumns: string[] = ['name', 'price', 'status', 'action'];
+    dataSource: DeliveryDatasource;
 
     @ViewChild('input') input: ElementRef;
     @ViewChild(MatPaginator) paginator: MatPaginator;
     private subscription: Subscription;
 
     constructor(
-        private categoryService: CategoryService,
+        private deliveryService: DeliveryService,
         public themeService: CustomizerSettingsService
     ) {
         this.themeService.isToggled$.subscribe(isToggled => {
@@ -51,8 +51,8 @@ export class ECategoriesComponent implements OnInit, AfterViewInit{
 
 
     ngOnInit(): void {
-        this.dataSource = new CategoryDatasource(this.categoryService);
-        this.dataSource.loadCategories();
+        this.dataSource = new DeliveryDatasource(this.deliveryService);
+        this.dataSource.loadDeliveries();
     }
 
     ngAfterViewInit() {
@@ -64,7 +64,7 @@ export class ECategoriesComponent implements OnInit, AfterViewInit{
                 distinctUntilChanged(),
                 tap(() => {
                     this.paginator.pageIndex = 1;
-                    this.dataSource.loadCategories(this.paginator.pageIndex, this.paginator.pageSize, this.input.nativeElement.value);
+                    this.dataSource.loadDeliveries(this.paginator.pageIndex, this.paginator.pageSize, this.input.nativeElement.value);
                 })
             ).subscribe();
     }
@@ -78,13 +78,19 @@ export class ECategoriesComponent implements OnInit, AfterViewInit{
         this.themeService.toggleRTLEnabledTheme();
     }
 
-    deleteCategory(id: string) {
-        this.categoryService.deleteCategory(id).subscribe(() => {
-            this.dataSource.loadCategories();
+    disableDeliveryZone(id: string) {
+        this.deliveryService.disableDeliveryZone(id).subscribe(() => {
+            this.dataSource.loadDeliveries();
+        });
+    }
+
+    enableDeliveryZone(id: string) {
+        this.deliveryService.enableDeliveryZone(id).subscribe(() => {
+            this.dataSource.loadDeliveries();
         });
     }
 
     logEvent($event: PageEvent) {
-        this.dataSource.loadCategories($event.pageIndex + 1, $event.pageSize);
+        this.dataSource.loadDeliveries($event.pageIndex + 1, $event.pageSize);
     }
 }

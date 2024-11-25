@@ -30,6 +30,6 @@ export interface Products {
     products: Product[];
 }
 
-export interface Category {
-    categories: string[];
-}
+// export interface Category {
+//     categories: string[];
+// }

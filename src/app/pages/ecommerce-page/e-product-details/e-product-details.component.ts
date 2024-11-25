@@ -57,26 +57,21 @@ import {OrderService} from "../../../shared/service/order.service";
         MatButtonModule,
         CarouselModule,
         NgFor,
-        NgClass,
         FormsModule,
         MatTabsModule,
         MatFormFieldModule,
         MatInputModule,
         FormsModule,
-        StarRatingComponent,
         MatProgressBarModule,
         NgIf,
         AsyncPipe,
         NgOptimizedImage,
         CurrencyPipe,
-        MatSelect,
-        MatOption,
         MatProgressSpinner,
         DecimalPipe,
         MatTable,
         MatCell,
         MatCellDef,
-        MatCheckbox,
         MatColumnDef,
         MatRow,
         MatRowDef,
@@ -96,7 +91,7 @@ export class EProductDetailsComponent implements OnInit, OnDestroy {
     public productStatistics$: Observable<ProductOrderStatistics>;
     public bundle_price = 0;
     datasource: MatTableDataSource<Bundle>;
-    selection = new SelectionModel<Bundle>(true, []);
+    //selection = new SelectionModel<Bundle>(true, []);
     displayedColumns: string[] = ['unit', 'price', 'status', 'action'];
 
     private reviewSubject: BehaviorSubject<Reviews | null> = new BehaviorSubject<Reviews | null>(null)

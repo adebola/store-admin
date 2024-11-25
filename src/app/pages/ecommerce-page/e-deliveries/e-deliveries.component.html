@@ -1,7 +1,7 @@
 <!-- Breadcrumb -->
 <div class="breadcrumb-card mb-25 d-md-flex align-items-center justify-content-between">
     <h5 class="mb-0">
-        Categories
+        Delivery Zones
     </h5>
     <ol class="breadcrumb list-unstyled mt-0 mb-0 pl-0">
         <li class="breadcrumb-item position-relative">
@@ -14,7 +14,7 @@
             E-Commerce
         </li>
         <li class="breadcrumb-item position-relative">
-            Categories
+            Delivery Zones
         </li>
     </ol>
 </div>
@@ -30,12 +30,12 @@
                 <i class="material-symbols-outlined">
                     search
                 </i>
-                <input type="text" class="input-search d-block w-100 border-none outline-0" placeholder="Search category..." #input>
+                <input type="text" class="input-search d-block w-100 border-none outline-0" placeholder="Search delivery zone..." #input>
             </form>
         </mat-card-title>
         <mat-card-subtitle>
-            <a mat-button class="add-new-btn" routerLink="/ecommerce-page/create-category">
-                + Add New Category
+            <a mat-button class="add-new-btn" routerLink="/ecommerce-page/create-delivery">
+                + Add New Zone
             </a>
         </mat-card-subtitle>
     </mat-card-header>
@@ -43,18 +43,6 @@
         <div class="categories-table">
             <div class="table-responsive">
                 <table mat-table [dataSource]="dataSource">
-
-                    <!-- Image Column -->
-                    <ng-container matColumnDef="image">
-                        <th mat-header-cell *matHeaderCellDef>
-                            Image
-                        </th>
-                        <td mat-cell *matCellDef="let element">
-                            <div class="info">
-                                <img ngSrc="{{element.imageUrl}}" alt="category-image" width="40" height="40">
-                            </div>
-                        </td>
-                    </ng-container>
 
                     <!-- Name Column -->
                     <ng-container matColumnDef="name">
@@ -66,6 +54,15 @@
                         </td>
                     </ng-container>
 
+                    <!-- Price Column -->
+                    <ng-container matColumnDef="price">
+                        <th mat-header-cell *matHeaderCellDef>
+                            Price
+                        </th>
+                        <td mat-cell *matCellDef="let element" class="text-black fw-medium">
+                            {{element.price | currency: "₦":"symbol":"1.0-0" }}
+                        </td>
+                    </ng-container>
 
                     <!-- Status Column -->
                     <ng-container matColumnDef="status">
@@ -90,14 +87,19 @@
 
                         <td mat-cell *matCellDef="let element">
                             <div class="action-info">
-                                <a mat-button [routerLink]="['/ecommerce-page/edit-category',  element._id]" matTooltip="Edit Category" matTooltipPosition="above">
+                                <a mat-button [routerLink]="['/ecommerce-page/edit-delivery',  element.id]" matTooltip="Edit Delivery Zone" matTooltipPosition="above">
                                     <i class="material-symbols-outlined">
                                      edit
                                     </i>
                                 </a>
-                                <button type="button" mat-button matTooltip="Delete" matTooltipPosition="above" (click)="deleteCategory(element._id)">
+                                <button type="button" mat-button matTooltip="Enable Zone" matTooltipPosition="above" (click)="enableDeliveryZone(element.id)" *ngIf="!element.enabled">
                                     <i class="material-symbols-outlined">
-                                       delete
+                                       visibility
+                                    </i>
+                                </button>
+                                <button type="button" mat-button matTooltip="Disable Zone" matTooltipPosition="above" (click)="disableDeliveryZone(element.id)" *ngIf="element.enabled">
+                                    <i class="material-symbols-outlined">
+                                       visibility_off
                                     </i>
                                 </button>
                             </div>

@@ -5,8 +5,6 @@ import { InternalErrorComponent } from './common/internal-error/internal-error.c
 import { ChangePasswordComponent } from './settings/change-password/change-password.component';
 import { AccountSettingsComponent } from './settings/account-settings/account-settings.component';
 import { SettingsComponent } from './settings/settings.component';
-import { ConfirmEmailComponent } from './authentication/confirm-email/confirm-email.component';
-import { ResetPasswordComponent } from './authentication/reset-password/reset-password.component';
 import { ForgotPasswordComponent } from './authentication/forgot-password/forgot-password.component';
 import { SignUpComponent } from './authentication/sign-up/sign-up.component';
 import { SignInComponent } from './authentication/sign-in/sign-in.component';
@@ -17,7 +15,6 @@ import { InvoiceDetailsComponent } from './pages/invoices-page/invoice-details/i
 import { InvoicesComponent } from './pages/invoices-page/invoices/invoices.component';
 import { InvoicesPageComponent } from './pages/invoices-page/invoices-page.component';
 import { EReviewsComponent } from './pages/ecommerce-page/e-reviews/e-reviews.component';
-import { EEditCategoryComponent } from './pages/ecommerce-page/e-edit-category/e-edit-category.component';
 import { ECreateCategoryComponent } from './pages/ecommerce-page/e-create-category/e-create-category.component';
 import { ECategoriesComponent } from './pages/ecommerce-page/e-categories/e-categories.component';
 import { ECreateSellerComponent } from './pages/ecommerce-page/e-create-seller/e-create-seller.component';
@@ -32,6 +29,9 @@ import { EcommercePageComponent } from './pages/ecommerce-page/ecommerce-page.co
 import {AuthGuard} from "./authentication/auth-guard.service";
 import {UserDetailsComponent} from "./pages/users-page/user-details/user-details.component";
 import {RecentOrdersComponent} from "./dashboard/ecommerce/recent-orders/recent-orders.component";
+import {EDeliveriesComponent} from "./pages/ecommerce-page/e-deliveries/e-deliveries.component";
+import {EDeliveryDetailComponent} from "./pages/ecommerce-page/e-delivery-details/e-delivery-detail.component";
+import {EAuditComponent} from "./pages/ecommerce-page/e-audit/e-audits.component";
 
 export const routes: Routes = [
     {path: '', component: EcommerceComponent, canActivate: [AuthGuard]},
@@ -43,15 +43,19 @@ export const routes: Routes = [
             {path: '', component: EProductsListComponent},
             {path: 'product-details/:id', component: EProductDetailsComponent},
             {path: 'create-product', component: ECreateProductComponent},
+            {path: 'create-delivery', component: EDeliveryDetailComponent},
+            {path: 'edit-delivery/:id', component: EDeliveryDetailComponent},
             {path: 'edit-product/:id', component: EEditProductComponent},
+            {path: 'audits', component: EAuditComponent},
             {path: 'orders', component: RecentOrdersComponent},
+            {path: 'deliveries', component: EDeliveriesComponent},
             {path: 'order-details/:id', component: EOrderDetailsComponent},
             {path: 'sellers', component: ESellersComponent},
             {path: 'seller-details', component: ESellerDetailsComponent},
             {path: 'create-seller', component: ECreateSellerComponent},
             {path: 'categories', component: ECategoriesComponent},
             {path: 'create-category', component: ECreateCategoryComponent},
-            {path: 'edit-category/:id', component: EEditCategoryComponent},
+            {path: 'edit-category/:id', component: ECreateCategoryComponent},
             {path: 'reviews', component: EReviewsComponent}
         ]
     },
@@ -80,8 +84,6 @@ export const routes: Routes = [
             {path: '', component: SignInComponent},
             {path: 'sign-up', component: SignUpComponent},
             {path: 'forgot-password', component: ForgotPasswordComponent},
-            {path: 'reset-password', component: ResetPasswordComponent},
-            {path: 'confirm-email', component: ConfirmEmailComponent},
         ]
     },
     {

@@ -52,17 +52,6 @@ import {EProductBundleComponent} from "../e-product-bundle/e-product-bundle.comp
         NgForOf,
         NgIf,
         NgOptimizedImage,
-        CurrencyPipe,
-        MatCell,
-        MatCellDef,
-        MatColumnDef,
-        MatHeaderCell,
-        MatHeaderRow,
-        MatHeaderRowDef,
-        MatRow,
-        MatRowDef,
-        MatTable,
-        MatTooltip,
         EProductBundleComponent
     ],
     templateUrl: './e-create-product.component.html',
@@ -165,7 +154,6 @@ export class ECreateProductComponent implements OnInit, OnDestroy {
             ).subscribe(o => {
             this.snackbarService.message('Product created successfully');
             this.router.navigate(['/ecommerce-page']).then(r => {});
-            console.log(o);
         });
     }
 

@@ -1,6 +1,6 @@
 .mat-mdc-card {
     &.daxa-card {
-        &.edit-category-card {
+        &.create-category-card {
             .mat-mdc-card-content {
                 .main-label {
                     margin-bottom: 12px;
@@ -12,7 +12,7 @@
 ::ng-deep {
     .mat-mdc-card {
         &.daxa-card {
-            &.edit-category-card {
+            &.create-category-card {
                 .mat-mdc-card-content {
                     .btn-box {
                         .mat-mdc-button {
@@ -56,7 +56,7 @@
 
     .mat-mdc-card {
         &.daxa-card {
-            &.edit-category-card {
+            &.create-category-card {
                 .mat-mdc-card-content {
                     .main-label {
                         margin-bottom: 10px;
@@ -68,7 +68,7 @@
     ::ng-deep {
         .mat-mdc-card {
             &.daxa-card {
-                &.edit-category-card {
+                &.create-category-card {
                     .mat-mdc-card-content {
                         .btn-box {
                             .mat-mdc-button {

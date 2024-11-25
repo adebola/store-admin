@@ -77,25 +77,45 @@
                             </span>
                     </a>
 
-                    <a routerLink="/ecommerce-page/reviews" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}"
+                    <a routerLink="/ecommerce-page/deliveries" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}"
                        class="sidebar-menu-link">
                         <i class="material-symbols-outlined">
-                            reviews
+                            delivery_truck_bolt
                         </i>
                         <span class="title">
-                            Reviews
+                            Deliveries
                             </span>
                     </a>
 
-                    <a routerLink="/ecommerce-page/sellers" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}"
+                    <a routerLink="/ecommerce-page/audits" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}"
                        class="sidebar-menu-link">
                         <i class="material-symbols-outlined">
-                            front_loader
+                           dynamic_feed
                         </i>
                         <span class="title">
-                            Suppliers
-                        </span>
+                            Audits
+                            </span>
                     </a>
+
+<!--                    <a routerLink="/ecommerce-page/reviews" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}"-->
+<!--                       class="sidebar-menu-link">-->
+<!--                        <i class="material-symbols-outlined">-->
+<!--                            reviews-->
+<!--                        </i>-->
+<!--                        <span class="title">-->
+<!--                            Reviews-->
+<!--                            </span>-->
+<!--                    </a>-->
+
+<!--                    <a routerLink="/ecommerce-page/sellers" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}"-->
+<!--                       class="sidebar-menu-link">-->
+<!--                        <i class="material-symbols-outlined">-->
+<!--                            front_loader-->
+<!--                        </i>-->
+<!--                        <span class="title">-->
+<!--                            Suppliers-->
+<!--                        </span>-->
+<!--                    </a>-->
 
                     <a routerLink="/settings" routerLinkActive="active"
                        [routerLinkActiveOptions]="{exact: true}" class="sidebar-menu-link">
@@ -115,225 +135,73 @@
                     </a>
 
 
-                    <span class="sub-title text-body">
-                        PAGES
-                    </span>
-                    <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = true">
-                        <mat-expansion-panel-header>
-                            <mat-panel-title>
-                                <i class="material-symbols-outlined">
-                                    shopping_cart
-                                </i>
-                                <span class="title">
-                                    E-Commerce
-                                </span>
-                            </mat-panel-title>
-                        </mat-expansion-panel-header>
-                        <ul class="sidebar-sub-menu">
-                            <li class="sidemenu-item">
-                                <a routerLink="/ecommerce-page" routerLinkActive="active"
-                                   [routerLinkActiveOptions]="{exact: true}" class="sidemenu-link">
-                                    Products Grid
-                                </a>
-                            </li>
-                            <li class="sidemenu-item">
-                                <a routerLink="/ecommerce-page/product-details" routerLinkActive="active"
-                                   [routerLinkActiveOptions]="{exact: true}" class="sidemenu-link">
-                                    Product Details
-                                </a>
-                            </li>
-                            <li class="sidemenu-item">
-                                <a routerLink="/ecommerce-page/create-product" routerLinkActive="active"
-                                   [routerLinkActiveOptions]="{exact: true}" class="sidemenu-link">
-                                    Create Product
-                                </a>
-                            </li>
-                            <li class="sidemenu-item">
-                                <a routerLink="/ecommerce-page/edit-product" routerLinkActive="active"
-                                   [routerLinkActiveOptions]="{exact: true}" class="sidemenu-link">
-                                    Edit Product
-                                </a>
-                            </li>
-                            <li class="sidemenu-item">
-                                <a routerLink="/ecommerce-page/orders" routerLinkActive="active"
-                                   [routerLinkActiveOptions]="{exact: true}" class="sidemenu-link">
-                                    Orders
-                                </a>
-                            </li>
-                            <li class="sidemenu-item">
-                                <a routerLink="/ecommerce-page/order-details" routerLinkActive="active"
-                                   [routerLinkActiveOptions]="{exact: true}" class="sidemenu-link">
-                                    Order Details
-                                </a>
-                            </li>
-                            <li class="sidemenu-item">
-                                <a routerLink="/ecommerce-page/create-order" routerLinkActive="active"
-                                   [routerLinkActiveOptions]="{exact: true}" class="sidemenu-link">
-                                    Create Order
-                                </a>
-                            </li>
-                            <li class="sidemenu-item">
-                                <a routerLink="/ecommerce-page/customers" routerLinkActive="active"
-                                   [routerLinkActiveOptions]="{exact: true}" class="sidemenu-link">
-                                    Customers
-                                </a>
-                            </li>
-                            <li class="sidemenu-item">
-                                <a routerLink="/ecommerce-page/customer-details" routerLinkActive="active"
-                                   [routerLinkActiveOptions]="{exact: true}" class="sidemenu-link">
-                                    Customer Details
-                                </a>
-                            </li>
-                            <li class="sidemenu-item">
-                                <a routerLink="/ecommerce-page/categories" routerLinkActive="active"
-                                   [routerLinkActiveOptions]="{exact: true}" class="sidemenu-link">
-                                    Categories
-                                </a>
-                            </li>
-                            <li class="sidemenu-item">
-                                <a routerLink="/ecommerce-page/create-category" routerLinkActive="active"
-                                   [routerLinkActiveOptions]="{exact: true}" class="sidemenu-link">
-                                    Create Category
-                                </a>
-                            </li>
-                            <li class="sidemenu-item">
-                                <a routerLink="/ecommerce-page/edit-category" routerLinkActive="active"
-                                   [routerLinkActiveOptions]="{exact: true}" class="sidemenu-link">
-                                    Edit Category
-                                </a>
-                            </li>
-                            <li class="sidemenu-item">
-                                <a routerLink="/ecommerce-page/sellers" routerLinkActive="active"
-                                   [routerLinkActiveOptions]="{exact: true}" class="sidemenu-link">
-                                    Sellers
-                                </a>
-                            </li>
-                            <li class="sidemenu-item">
-                                <a routerLink="/ecommerce-page/seller-details" routerLinkActive="active"
-                                   [routerLinkActiveOptions]="{exact: true}" class="sidemenu-link">
-                                    Seller Details
-                                </a>
-                            </li>
-                            <li class="sidemenu-item">
-                                <a routerLink="/ecommerce-page/create-seller" routerLinkActive="active"
-                                   [routerLinkActiveOptions]="{exact: true}" class="sidemenu-link">
-                                    Create Seller
-                                </a>
-                            </li>
-                            <li class="sidemenu-item">
-                                <a routerLink="/ecommerce-page/reviews" routerLinkActive="active"
-                                   [routerLinkActiveOptions]="{exact: true}" class="sidemenu-link">
-                                    Reviews
-                                </a>
-                            </li>
-                        </ul>
-                    </mat-expansion-panel>
-                    <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = true">
-                        <mat-expansion-panel-header>
-                            <mat-panel-title>
-                                <i class="material-symbols-outlined">
-                                    content_paste
-                                </i>
-                                <span class="title">
-                                    Invoices
-                                </span>
-                            </mat-panel-title>
-                        </mat-expansion-panel-header>
-                        <ul class="sidebar-sub-menu">
-                            <li class="sidemenu-item">
-                                <a routerLink="/invoices" routerLinkActive="active"
-                                   [routerLinkActiveOptions]="{exact: true}" class="sidemenu-link">
-                                    Invoices
-                                </a>
-                            </li>
-                            <li class="sidemenu-item">
-                                <a routerLink="/invoices/invoice-details" routerLinkActive="active"
-                                   [routerLinkActiveOptions]="{exact: true}" class="sidemenu-link">
-                                    Invoice Details
-                                </a>
-                            </li>
-                        </ul>
-                    </mat-expansion-panel>
-                    <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = true">
-                        <mat-expansion-panel-header>
-                            <mat-panel-title>
-                                <i class="material-symbols-outlined">
-                                    account_box
-                                </i>
-                                <span class="title">
-                                    Profile
-                                </span>
-                            </mat-panel-title>
-                        </mat-expansion-panel-header>
-                        <ul class="sidebar-sub-menu">
-                            <li class="sidemenu-item">
-                                <a routerLink="/profile" routerLinkActive="active"
-                                   [routerLinkActiveOptions]="{exact: true}" class="sidemenu-link">
-                                    User Profile
-                                </a>
-                            </li>
-                        </ul>
-                    </mat-expansion-panel>
-                    <span class="sub-title text-body">
-                        MODULES
-                    </span>
-
-                    <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = true">
-                        <mat-expansion-panel-header>
-                            <mat-panel-title>
-                                <i class="material-symbols-outlined">
-                                    lock_open
-                                </i>
-                                <span class="title">
-                                    Authentication
-                                </span>
-                            </mat-panel-title>
-                        </mat-expansion-panel-header>
-                        <ul class="sidebar-sub-menu">
-                            <li class="sidemenu-item">
-                                <a routerLink="/authentication" routerLinkActive="active"
-                                   [routerLinkActiveOptions]="{exact: true}" class="sidemenu-link">
-                                    Sign In
-                                </a>
-                            </li>
-                            <li class="sidemenu-item">
-                                <a routerLink="/authentication/sign-up" routerLinkActive="active"
-                                   [routerLinkActiveOptions]="{exact: true}" class="sidemenu-link">
-                                    Sign Up
-                                </a>
-                            </li>
-                            <li class="sidemenu-item">
-                                <a routerLink="/authentication/forgot-password" routerLinkActive="active"
-                                   [routerLinkActiveOptions]="{exact: true}" class="sidemenu-link">
-                                    Forgot Password
-                                </a>
-                            </li>
-                            <li class="sidemenu-item">
-                                <a routerLink="/authentication/reset-password" routerLinkActive="active"
-                                   [routerLinkActiveOptions]="{exact: true}" class="sidemenu-link">
-                                    Reset Password
-                                </a>
-                            </li>
-                            <li class="sidemenu-item">
-                                <a routerLink="/authentication/confirm-email" routerLinkActive="active"
-                                   [routerLinkActiveOptions]="{exact: true}" class="sidemenu-link">
-                                    Confirm Email
-                                </a>
-                            </li>
-                        </ul>
-                    </mat-expansion-panel>
-                    <span class="sub-title text-body">
-                        OTHERS
-                    </span>
-                    <a routerLink="/my-profile" class="sidebar-menu-link" routerLinkActive="active"
-                       [routerLinkActiveOptions]="{exact: true}">
-                        <i class="material-symbols-outlined">
-                            account_circle
-                        </i>
-                        <span class="title">
-                            My Profile
-                        </span>
-                    </a>
+<!--                    <span class="sub-title text-body">-->
+<!--                        PAGES-->
+<!--                    </span>-->
+<!--                    <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = true">-->
+<!--                        <mat-expansion-panel-header>-->
+<!--                            <mat-panel-title>-->
+<!--                                <i class="material-symbols-outlined">-->
+<!--                                    shopping_cart-->
+<!--                                </i>-->
+<!--                                <span class="title">-->
+<!--                                    E-Commerce-->
+<!--                                </span>-->
+<!--                            </mat-panel-title>-->
+<!--                        </mat-expansion-panel-header>-->
+<!--                        <ul class="sidebar-sub-menu">-->
+<!--                            <li class="sidemenu-item">-->
+<!--                                <a routerLink="/ecommerce-page/create-category" routerLinkActive="active"-->
+<!--                                   [routerLinkActiveOptions]="{exact: true}" class="sidemenu-link">-->
+<!--                                    Create Category-->
+<!--                                </a>-->
+<!--                            </li>-->
+<!--                            <li class="sidemenu-item">-->
+<!--                                <a routerLink="/ecommerce-page/sellers" routerLinkActive="active"-->
+<!--                                   [routerLinkActiveOptions]="{exact: true}" class="sidemenu-link">-->
+<!--                                    Sellers-->
+<!--                                </a>-->
+<!--                            </li>-->
+<!--                            <li class="sidemenu-item">-->
+<!--                                <a routerLink="/ecommerce-page/seller-details" routerLinkActive="active"-->
+<!--                                   [routerLinkActiveOptions]="{exact: true}" class="sidemenu-link">-->
+<!--                                    Seller Details-->
+<!--                                </a>-->
+<!--                            </li>-->
+<!--                            <li class="sidemenu-item">-->
+<!--                                <a routerLink="/ecommerce-page/create-seller" routerLinkActive="active"-->
+<!--                                   [routerLinkActiveOptions]="{exact: true}" class="sidemenu-link">-->
+<!--                                    Create Seller-->
+<!--                                </a>-->
+<!--                            </li>-->
+<!--                        </ul>-->
+<!--                    </mat-expansion-panel>-->
+<!--                    <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = true">-->
+<!--                        <mat-expansion-panel-header>-->
+<!--                            <mat-panel-title>-->
+<!--                                <i class="material-symbols-outlined">-->
+<!--                                    content_paste-->
+<!--                                </i>-->
+<!--                                <span class="title">-->
+<!--                                    Invoices-->
+<!--                                </span>-->
+<!--                            </mat-panel-title>-->
+<!--                        </mat-expansion-panel-header>-->
+<!--                        <ul class="sidebar-sub-menu">-->
+<!--                            <li class="sidemenu-item">-->
+<!--                                <a routerLink="/invoices" routerLinkActive="active"-->
+<!--                                   [routerLinkActiveOptions]="{exact: true}" class="sidemenu-link">-->
+<!--                                    Invoices-->
+<!--                                </a>-->
+<!--                            </li>-->
+<!--                            <li class="sidemenu-item">-->
+<!--                                <a routerLink="/invoices/invoice-details" routerLinkActive="active"-->
+<!--                                   [routerLinkActiveOptions]="{exact: true}" class="sidemenu-link">-->
+<!--                                    Invoice Details-->
+<!--                                </a>-->
+<!--                            </li>-->
+<!--                        </ul>-->
+<!--                    </mat-expansion-panel>-->
                 </mat-accordion>
             </div>
         </div>
