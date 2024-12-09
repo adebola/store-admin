@@ -32,14 +32,22 @@ export class ProductDatasource implements DataSource<Product> {
         return (this.totalSize && this.totalSize > 0) ? this.totalSize - 1 : 0;
     }
 
-    loadProducts(pageIndex = 1, pageSize = 20) {
+    loadProducts(pageIndex = 1, pageSize = 20, search = null) {
         // this.loadingSubject.next(true);
 
         if (this.subscription) {
             this.subscription.unsubscribe();
         }
 
-        this.subscription = this.productService.getProducts(pageIndex, pageSize)
+        let ob$: Observable<Products>;
+
+        if (search) {
+            ob$ = this.productService.searchProducts(pageIndex, pageSize, search);
+        } else {
+            ob$ = this.productService.getProducts(pageIndex, pageSize);
+        }
+
+        this.subscription = ob$
             .pipe(
                 //catchError(() => of(null)),
                 //catchError(() => of([])),

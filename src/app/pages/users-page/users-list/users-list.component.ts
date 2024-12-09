@@ -39,13 +39,10 @@ import {UserDatasource} from "../user.datasource";
 export class UsersListComponent implements OnInit, AfterViewInit {
     displayedColumns: string[] = ['id', 'email', 'name', 'phone', 'verified', 'action'];
     datasource: UserDatasource
-    selection = new SelectionModel<BackEndUser>(true, []);
 
     @ViewChild('input') input: ElementRef;
     @ViewChild(MatPaginator) paginator: MatPaginator;
     private destroyRef = inject(DestroyRef);
-
-    private subscription: Subscription;
 
     constructor(
         private userService: UserService,
@@ -66,8 +63,6 @@ export class UsersListComponent implements OnInit, AfterViewInit {
     }
 
     ngAfterViewInit() {
-        console.log('afterViewInit', this.input.nativeElement);
-
         fromEvent(this.input.nativeElement, 'keyup')
             .pipe(
                 takeUntilDestroyed(this.destroyRef),

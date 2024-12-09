@@ -70,7 +70,7 @@ export class EProductsListComponent implements OnInit, AfterViewInit {
                 distinctUntilChanged(),
                 tap(() => {
                     this.paginator.pageIndex = 1;
-                    //this.dataSource.loadProducts(this.paginator.pageIndex, this.paginator.pageSize, this.input.nativeElement.value);
+                    this.dataSource.loadProducts(this.paginator.pageIndex, this.paginator.pageSize, this.input.nativeElement.value);
                 })
             ).subscribe();
     }

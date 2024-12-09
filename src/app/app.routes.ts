@@ -32,6 +32,7 @@ import {RecentOrdersComponent} from "./dashboard/ecommerce/recent-orders/recent-
 import {EDeliveriesComponent} from "./pages/ecommerce-page/e-deliveries/e-deliveries.component";
 import {EDeliveryDetailComponent} from "./pages/ecommerce-page/e-delivery-details/e-delivery-detail.component";
 import {EAuditComponent} from "./pages/ecommerce-page/e-audit/e-audits.component";
+import {EAuditDetailComponent} from "./pages/ecommerce-page/e-audit-details/e-audit-detail.component";
 
 export const routes: Routes = [
     {path: '', component: EcommerceComponent, canActivate: [AuthGuard]},
@@ -56,6 +57,7 @@ export const routes: Routes = [
             {path: 'categories', component: ECategoriesComponent},
             {path: 'create-category', component: ECreateCategoryComponent},
             {path: 'edit-category/:id', component: ECreateCategoryComponent},
+            {path: 'view-audit/:id', component: EAuditDetailComponent},
             {path: 'reviews', component: EReviewsComponent}
         ]
     },

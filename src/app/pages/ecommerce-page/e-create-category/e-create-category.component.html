@@ -55,42 +55,19 @@
                     <div class="row">
                         <div class="col-sm-6">
                             <div class="mb-25">
-                                <label class="main-label d-block lh-1 text-black">
-                                    Category Name
-                                </label>
                                 <mat-form-field>
                                     <mat-label>
-                                        Category name
+                                        Category Name
                                     </mat-label>
                                     <input matInput formControlName="name">
                                 </mat-form-field>
                             </div>
                         </div>
-<!--                        <div class="col-sm-6">-->
-<!--                            <div class="mb-25">-->
-<!--                                <label class="main-label d-block lh-1 text-black">-->
-<!--                                    Product Category-->
-<!--                                </label>-->
-<!--                                <mat-form-field>-->
-<!--                                    <mat-label>-->
-<!--                                        Select-->
-<!--                                    </mat-label>-->
-<!--                                    <mat-select formControlName="category">-->
-<!--                                        <mat-option *ngFor="let category of categories$ | async" [value]="category">-->
-<!--                                            {{ category }}-->
-<!--                                        </mat-option>-->
-<!--                                    </mat-select>-->
-<!--                                </mat-form-field>-->
-<!--                            </div>-->
-<!--                        </div>-->
                         <div class="col-sm-12">
                             <div class="mb-25">
-                                <label class="main-label d-block lh-1 text-black">
-                                    Category Description
-                                </label>
                                 <mat-form-field>
                                     <mat-label>
-                                        Category description
+                                        Category Description
                                     </mat-label>
                                     <textarea matInput placeholder="Type here..."
                                               formControlName="description"></textarea>
@@ -108,7 +85,6 @@
         </form>
     </mat-card-content>
 </mat-card>
-
 
 <ng-template #loading>
     <div class="d-flex justify-content-center align-items-center h-100">
