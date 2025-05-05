@@ -256,4 +256,25 @@
             </mat-card-content>
         </mat-card>
     </div>
+
+    <div class="col-lg-4 col-md-6">
+        <mat-card
+            class="daxa-card order-details-card mb-25 border-radius bg-white border-none d-block"
+            [class.rtl-enabled]="themeService.isRTLEnabled()"
+        >
+            <mat-card-content>
+                <h5>
+                    Customer Instructions
+                </h5>
+                <ul class="pl-0 mb-0 mt-0 list-unstyled">
+                    <li class="text-body">
+                        <span class="text-black">Cut:</span> {{o.cut ? 'Please cut': 'Please do not cut'}}
+                    </li>
+                    <li class="text-body">
+                        <span class="text-black">Additional Instructions:</span> {{o.instruction ?  o.instruction : 'None'}}
+                    </li>
+                </ul>
+            </mat-card-content>
+        </mat-card>
+    </div>
 </div>
