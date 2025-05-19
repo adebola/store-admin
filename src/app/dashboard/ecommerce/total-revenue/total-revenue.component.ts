@@ -9,7 +9,12 @@ import {AsyncPipe, CurrencyPipe, NgIf} from "@angular/common";
 @Component({
     selector: 'app-total-revenue',
     standalone: true,
-    imports: [MatCardModule, RouterLink, NgIf, AsyncPipe, CurrencyPipe],
+    imports: [
+        MatCardModule,
+        NgIf,
+        AsyncPipe,
+        CurrencyPipe
+    ],
     templateUrl: './total-revenue.component.html',
     styleUrl: './total-revenue.component.scss'
 })

@@ -18,17 +18,7 @@ import {SnackbarService} from "../../../shared/service/snackbar.service";
 import {takeUntilDestroyed} from "@angular/core/rxjs-interop";
 import {catchError} from "rxjs/operators";
 import {HttpErrorResponse} from "@angular/common/http";
-import {Bundle, BundleItem} from "../../../shared/model/product.model";
-import {
-    MatCell,
-    MatCellDef,
-    MatColumnDef,
-    MatHeaderCell,
-    MatHeaderRow,
-    MatHeaderRowDef,
-    MatRow, MatRowDef, MatTable
-} from "@angular/material/table";
-import {MatTooltip} from "@angular/material/tooltip";
+import {BundleItem} from "../../../shared/model/product.model";
 import {EProductBundleComponent} from "../e-product-bundle/e-product-bundle.component";
 
 @Component({

@@ -14,7 +14,15 @@ import {tap} from "rxjs/operators";
 @Component({
     selector: 'app-sign-in',
     standalone: true,
-    imports: [RouterLink, MatFormFieldModule, MatInputModule, MatButtonModule, MatCheckboxModule, ReactiveFormsModule, NgIf],
+    imports: [
+        RouterLink,
+        MatFormFieldModule,
+        MatInputModule,
+        MatButtonModule,
+        MatCheckboxModule,
+        ReactiveFormsModule,
+        NgIf
+    ],
     templateUrl: './sign-in.component.html',
     styleUrl: './sign-in.component.scss'
 })
