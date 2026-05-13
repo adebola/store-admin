@@ -1,0 +1,123 @@
+<div
+    class="chat-panel"
+    [class.open]="isOpen"
+    [class.component-dark-theme]="themeService.isDark()"
+    [class.card-borderd-theme]="themeService.isCardBorder()"
+>
+    <!-- Panel Header -->
+    <div class="chat-panel-header">
+        <div class="d-flex align-items-center gap-2">
+            <button *ngIf="view === 'chat'" mat-icon-button (click)="backToSessions()" matTooltip="Back to sessions">
+                <i class="material-symbols-outlined">arrow_back</i>
+            </button>
+            <span class="fw-semibold">
+                {{ view === 'sessions' ? 'AI Chats' : 'Chat' }}
+            </span>
+        </div>
+        <button mat-icon-button (click)="toggleService.close()" matTooltip="Close">
+            <i class="material-symbols-outlined">close</i>
+        </button>
+    </div>
+
+    <!-- Sessions List View -->
+    <div *ngIf="view === 'sessions'" class="sessions-view">
+        <div class="new-chat-btn-wrapper">
+            <button mat-raised-button color="primary" class="w-100" (click)="createNewSession()" [disabled]="loadingSessions">
+                <i class="material-symbols-outlined">add</i>
+                New Chat
+            </button>
+        </div>
+
+        <div *ngIf="loadingSessions" class="loading-container">
+            <mat-spinner diameter="32"></mat-spinner>
+        </div>
+
+        <div *ngIf="!loadingSessions && sessions.length === 0" class="empty-state">
+            <i class="material-symbols-outlined empty-icon">chat_bubble_outline</i>
+            <p>No chat sessions yet</p>
+            <p class="text-muted">Start a new chat to get help</p>
+        </div>
+
+        <div class="session-list" *ngIf="!loadingSessions">
+            <div
+                *ngFor="let session of sessions; trackBy: trackBySessionId"
+                class="session-item"
+                (click)="selectSession(session)"
+            >
+                <div class="session-info">
+                    <div class="session-title">{{ session.title }}</div>
+                    <div class="session-meta">
+                        <span>{{ session.messageCount }} message{{ session.messageCount !== 1 ? 's' : '' }}</span>
+                        <span class="dot-separator"></span>
+                        <span>{{ session.createdAt | date:'MMM d, h:mm a' }}</span>
+                    </div>
+                </div>
+                <button mat-icon-button class="delete-btn" (click)="deleteSession(session, $event)" matTooltip="Delete">
+                    <i class="material-symbols-outlined" style="font-size: 18px">delete</i>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Chat View -->
+    <div *ngIf="view === 'chat'" class="chat-view">
+        <div class="messages-container">
+            <div *ngIf="loadingMessages" class="loading-container">
+                <mat-spinner diameter="32"></mat-spinner>
+            </div>
+
+            <div *ngIf="!loadingMessages && messages.length === 0" class="empty-state">
+                <i class="material-symbols-outlined empty-icon">smart_toy</i>
+                <p>Start the conversation</p>
+                <p class="text-muted">Ask a question about your store</p>
+            </div>
+
+            <div class="messages-list">
+                <div
+                    *ngFor="let msg of messages; trackBy: trackByMessageId"
+                    class="message"
+                    [ngClass]="msg.sender"
+                >
+                    <div class="message-bubble">
+                        <div class="message-content">{{ msg.content }}</div>
+                        <div class="message-time">{{ msg.timestamp | date:'shortTime' }}</div>
+                    </div>
+                </div>
+
+                <div *ngIf="sendingMessage" class="message ai">
+                    <div class="message-bubble typing">
+                        <div class="typing-indicator">
+                            <span></span><span></span><span></span>
+                        </div>
+                    </div>
+                </div>
+
+                <div #messagesEnd></div>
+            </div>
+        </div>
+
+        <div class="message-input-area">
+            <mat-form-field class="message-field" appearance="outline">
+                <input
+                    matInput
+                    #messageInput
+                    [(ngModel)]="newMessage"
+                    placeholder="Type a message..."
+                    (keyup.enter)="sendMessage()"
+                    [disabled]="sendingMessage"
+                    maxlength="2000"
+                >
+            </mat-form-field>
+            <button
+                mat-icon-button
+                color="primary"
+                class="send-btn"
+                (click)="sendMessage()"
+                [disabled]="sendingMessage || !newMessage.trim()"
+                matTooltip="Send"
+            >
+                <i class="material-symbols-outlined">send</i>
+            </button>
+        </div>
+    </div>
+</div>

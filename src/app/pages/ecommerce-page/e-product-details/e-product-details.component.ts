@@ -1,12 +1,6 @@
-import {AsyncPipe, CurrencyPipe, DecimalPipe, NgClass, NgFor, NgIf, NgOptimizedImage} from '@angular/common';
+import {AsyncPipe, CurrencyPipe, DecimalPipe, NgFor, NgIf, NgOptimizedImage} from '@angular/common';
 import {Component, DestroyRef, Inject, inject, OnDestroy, OnInit} from '@angular/core';
-import {
-    FormBuilder,
-    FormGroup,
-    FormsModule,
-    ReactiveFormsModule,
-    Validators
-} from '@angular/forms';
+import {FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators} from '@angular/forms';
 import {MatButtonModule} from '@angular/material/button';
 import {MatCardModule} from '@angular/material/card';
 import {MatMenuModule} from '@angular/material/menu';
@@ -15,7 +9,6 @@ import {CarouselModule} from 'ngx-owl-carousel-o';
 import {MatTabsModule} from '@angular/material/tabs';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatInputModule} from '@angular/material/input';
-import {StarRatingComponent} from './star-rating/star-rating.component';
 import {MatProgressBarModule} from '@angular/material/progress-bar';
 import {CustomizerSettingsService} from '../../../customizer-settings/customizer-settings.service';
 import {takeUntilDestroyed} from "@angular/core/rxjs-interop";
@@ -25,7 +18,6 @@ import {ProductService} from "../../../shared/service/product.service";
 import {tap} from "rxjs/operators";
 import {ReviewService} from "../../../shared/service/review.service";
 import {Reviews} from "../../../shared/model/review.model";
-import {MatOption, MatSelect} from "@angular/material/select";
 import {ProductOrderStatistics} from "../../../shared/model/order.model";
 import {MatProgressSpinner} from "@angular/material/progress-spinner";
 import {
@@ -41,11 +33,8 @@ import {
     MatTable,
     MatTableDataSource
 } from "@angular/material/table";
-import {MatCheckbox} from "@angular/material/checkbox";
-import {SelectionModel} from "@angular/cdk/collections";
 import {MatTooltip} from "@angular/material/tooltip";
 import {SnackbarService} from "../../../shared/service/snackbar.service";
-import {OrderService} from "../../../shared/service/order.service";
 
 @Component({
     selector: 'app-e-product-details',

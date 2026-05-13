@@ -6,6 +6,7 @@ import { ToggleService } from './toggle.service';
 import {NgClass, NgOptimizedImage} from '@angular/common';
 import { CustomizerSettingsService } from '../../customizer-settings/customizer-settings.service';
 import {AuthService} from "../../authentication/auth.service";
+import {ChatPanelToggleService} from "../chat-panel/chat-panel-toggle.service";
 
 @Component({
     selector: 'app-sidebar',
@@ -34,6 +35,7 @@ export class SidebarComponent {
         private router: Router,
         private authService: AuthService,
         private toggleService: ToggleService,
+        private chatPanelToggleService: ChatPanelToggleService,
         public themeService: CustomizerSettingsService
     ) {
         this.toggleService.isSidebarToggled$.subscribe(isSidebarToggled => {
@@ -51,6 +53,10 @@ export class SidebarComponent {
 
     // Mat Expansion
     panelOpenState = false;
+
+    openChatPanel() {
+        this.chatPanelToggleService.open();
+    }
 
     logout() {
         this.authService.logout();

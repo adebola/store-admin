@@ -7,6 +7,7 @@ import { FooterComponent } from './common/footer/footer.component';
 import { CustomizerSettingsComponent } from './customizer-settings/customizer-settings.component';
 import { CustomizerSettingsService } from './customizer-settings/customizer-settings.service';
 import { ToggleService } from './common/sidebar/toggle.service';
+import { ChatPanelComponent } from './common/chat-panel/chat-panel.component';
 import {AuthService} from "./authentication/auth.service";
 
 @Component({
@@ -19,6 +20,7 @@ import {AuthService} from "./authentication/auth.service";
         HeaderComponent,
         FooterComponent,
         CustomizerSettingsComponent,
+        ChatPanelComponent,
         NgClass
     ],
     templateUrl: './app.component.html',

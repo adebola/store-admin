@@ -7,6 +7,7 @@ import { Router, RouterLink, RouterLinkActive} from '@angular/router';
 import { CustomizerSettingsService } from '../../customizer-settings/customizer-settings.service';
 import {AuthService} from "../../authentication/auth.service";
 import {MatTooltip} from "@angular/material/tooltip";
+import {ChatPanelToggleService} from "../chat-panel/chat-panel-toggle.service";
 
 @Component({
     selector: 'app-header',
@@ -37,6 +38,7 @@ export class HeaderComponent {
         private router: Router,
         public authService: AuthService,
         private toggleService: ToggleService,
+        private chatPanelToggleService: ChatPanelToggleService,
         public themeService: CustomizerSettingsService
     ) {
         this.toggleService.isSidebarToggled$.subscribe(isSidebarToggled => {
@@ -69,6 +71,10 @@ export class HeaderComponent {
         this.themeService.toggleTheme();
     }
 
+
+    toggleChatPanel() {
+        this.chatPanelToggleService.toggle();
+    }
 
     logout() {
         this.authService.logout();

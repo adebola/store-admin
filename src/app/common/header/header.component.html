@@ -65,6 +65,19 @@
                 </button>
             </li>
 
+            <li>
+                <button
+                    mat-button
+                    matTooltip="AI Chat"
+                    class="messages-menu-btn p-0"
+                    (click)="toggleChatPanel()"
+                >
+                    <i class="material-symbols-outlined">
+                        chat
+                    </i>
+                </button>
+            </li>
+
             <li *ngIf="(authService.user$ | async)">
                 <button
                     mat-button
