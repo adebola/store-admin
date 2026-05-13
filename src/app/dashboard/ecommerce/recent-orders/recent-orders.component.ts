@@ -11,6 +11,7 @@ import { CustomizerSettingsService } from '../../../customizer-settings/customiz
 import {debounceTime, distinctUntilChanged, fromEvent, Subscription} from "rxjs";
 import {OrderDatasource} from "./order.datasource";
 import {OrderService} from "../../../shared/service/order.service";
+import {SnackbarService} from "../../../shared/service/snackbar.service";
 import {tap} from "rxjs/operators";
 
 @Component({
@@ -37,14 +38,43 @@ export class RecentOrdersComponent implements OnInit, AfterViewInit {
 
     isToggled = false;
     subscription: Subscription;
-    displayedColumns: string[] = ['Id', 'price', 'date', 'status'];
+    displayedColumns: string[] = ['Id', 'price', 'date', 'status', 'actions'];
     dataSource: OrderDatasource;
+    verifyingOrderIds = new Set<string>();
 
     @Input() standalone = true;
 
-    constructor(public themeService: CustomizerSettingsService, private orderService: OrderService) {
+    constructor(
+        public themeService: CustomizerSettingsService,
+        private orderService: OrderService,
+        private snackbarService: SnackbarService
+    ) {
         this.themeService.isToggled$.subscribe(isToggled => {
             this.isToggled = isToggled;
+        });
+    }
+
+    verifyPayment(orderId: string, event: MouseEvent) {
+        event.stopPropagation();
+        if (this.verifyingOrderIds.has(orderId)) return;
+
+        this.verifyingOrderIds.add(orderId);
+        this.orderService.verifyOrderPayment(orderId).subscribe({
+            next: (res) => {
+                this.verifyingOrderIds.delete(orderId);
+                if (res && res.status === 'Paid') {
+                    this.snackbarService.message(res.message || 'Payment confirmed with Paystack. Order updated.');
+                    const page = this.paginator ? this.paginator.pageIndex + 1 : 1;
+                    const size = this.paginator ? this.paginator.pageSize : 20;
+                    this.dataSource.loadOrders(page, size);
+                } else {
+                    this.snackbarService.message((res && res.message) || 'Paystack reports this transaction is not yet completed.');
+                }
+            },
+            error: (err) => {
+                this.verifyingOrderIds.delete(orderId);
+                this.snackbarService.message(err?.error?.message || 'Failed to verify payment. Please try again.');
+            }
         });
     }
 

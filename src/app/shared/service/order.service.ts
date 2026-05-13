@@ -140,4 +140,11 @@ export class OrderService {
                 map(a => a.aggregate)
             );
     }
+
+    verifyOrderPayment(orderId: string): Observable<{status: string; message?: string; order?: Order}> {
+        return this.http.post<{status: string; message?: string; order?: Order}>(
+            `${ORDER_URL}/admin/${orderId}/verify-payment`,
+            {}
+        );
+    }
 }
